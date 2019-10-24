@@ -1,0 +1,242 @@
+/* Conteneur principal */
+.overlay-image {
+    position: relative;
+}
+
+/* Texte original */
+.overlay-image .text {
+    color: #fff;
+    font-size: 30px;
+    line-height: 1.5em;
+    text-shadow: 2px 2px 2px #000;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+/* Overlay */
+.overlay-image .hover {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+}
+/* Apparition overlay sur passage souris */
+.overlay-image:hover .hover {
+    opacity: 1;
+}
+
+.overlay-image .normal {
+    transition: .5s ease;
+}
+.overlay-image:hover .normal {
+    opacity: 0;
+}
+.overlay-image .hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.overlay-image .valeur{
+    color: #FBC210;
+}
+
+.domaine .pb10{
+    padding-bottom: 10px;
+}
+
+.mt50{
+    margin-top: 50px;
+}
+
+
+.search_form {position:relative;}
+.search_form:before {
+    content: "\f002";
+    position:absolute;
+    top:8px;
+    right:0;
+    width:28px;
+    height:11px;
+    font-family:FontAwesome;
+    text-align:center;
+    line-height:11px;
+    font-size:10px;
+    color:#666;
+    border-left:1px dotted #999;
+}
+.search_form input[type="text"] {
+    display:block;
+    padding:0 35px 0 8px;
+    width:100%;
+    height:30px;
+    line-height:30px;
+    font-size:11px;
+    color:#666;
+    border:2px solid #e9e9e9;
+    background-color:#fff;
+}
+.search_form input[type="text"]:focus {border-color:#ccc;}
+
+
+/* 
+ *  Domaine responsive  
+ */
+
+@media (min-width: 1024px) {
+    .overlay-domaine{
+        width: 195px;
+        height: 130px;
+        background-color: #42115E;
+        margin-left: 15px;
+        border-radius: 7px;
+        margin-bottom: 15px;
+    }
+    .overlay-domaine .content{
+        text-align: center;
+        position: relative;
+        top: 50%;
+        color: #fff;
+        font-size: 1.5em;
+    }
+    .overlay-domaine:hover .content{
+        text-align: center;
+        position: relative;
+        top: 50%;
+        color: #42115E;
+        font-size: 1.5em;
+    }
+    .overlay-domaine:hover{
+        width: 195px;
+        height: 130px;
+        background-color: #FBC210;
+        margin-left: 15px;
+        border-radius: 7px;
+    }
+
+    .avantage{
+        padding-bottom: 100px;
+    }
+
+    .avantage a:hover{
+        color: #42115E;
+        font-size: 1.5em;
+        line-height: 20px;
+        text-align: left;
+    }
+
+    .avantages{
+        margin: 100px auto;
+    }
+
+    .services{
+        margin: 100px auto;
+    }
+    .services p{
+        font-size: 1.2em;
+        line-height: 26px;
+    }
+
+    .services h2{
+        color: #FBC210;
+    }
+
+    .modes{
+        margin: 100px auto;
+    }
+    .mode-operatoire {
+        margin: 50px auto;
+    }
+    .mode-operatoire p{
+        font-size: 1.2em;
+        line-height: 26px;
+    }
+
+    .presentation{
+        background-color:rgba(0,0,0,0.8);
+        color: #fff;
+    }
+
+}
+
+.details .bien-titre{
+    display:block;
+    line-height:36px;
+    font-size:26px;
+    color:#333;
+    padding: 50px 0 0 0;
+}
+
+
+.bien_meta {
+    padding-bottom:24px;
+    width:auto !important;
+}
+.bien_meta li {
+    float:none !important;
+    display:inline-block;
+    width:auto !important;
+    padding-right:20px;
+    margin-right:0 !important;
+    text-transform:uppercase;
+    font-size:11px;
+    color:#333;
+}
+.bien_meta li i {
+    top:0;
+    padding-right:7px;
+    color:#ccc;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.bien_meta li .sep {
+    display:inline-block;
+    padding:0 3px;
+    color:#ccc;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.bien_meta li:hover i, .post_meta li:hover .sep {color:#333;}
+
+
+.details_caracteristique {padding-left:90px;}
+.details_caracteristique li {
+    position:relative;
+    padding:10px 5px 0 12px;
+}
+.details_caracteristique li:before {
+    content:'°';
+    position:absolute;
+    left:0;
+    top:14px;
+    font-size:16px;
+    color:#ccc;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.details_caracteristique li:hover:before {color:#333;}
+.details_caracteristique li a {
+    text-transform:uppercase;
+    font-size:11px;
+    color:#666;
+}
+.details_caracteristique li a:hover {color:#333;}
+
+.contact_info_block {
+    min-height:490px;
+    padding:14px 18px;
+    border:2px solid #ccc;
+}
+.contact_info_block li {
+    margin-bottom:17px;
+    padding-bottom:14px;
+    border-bottom:1px solid #e9e9e9;
+}
+.contact_info_block li:last-child {border:0;}
+.contact_info_block h3 {
+    margin-bottom:12px;
+}
