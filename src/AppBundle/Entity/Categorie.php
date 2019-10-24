@@ -2,17 +2,16 @@
 
 namespace AppBundle\Entity;
 
-
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Domaine
+ * Categorie
  *
- * @ORM\Table(name="domaine")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DomaineRepository")
+ * @ORM\Table(name="categorie")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategorieRepository")
  */
-class Domaine
+class Categorie
 {
     /**
      * @var int
@@ -33,14 +32,15 @@ class Domaine
     /**
      * @var int
      *
-     * @ORM\Column(name="nombre_categorie", type="integer", length=255, nullable=true)
+     * @ORM\Column(name="nombre_bien", type="integer", nullable=true)
      */
-    private $nombreCategorie;
+    private $nombreBien;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Categorie", mappedBy="domaine")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Domaine", inversedBy="categories")
+     * @ORM\JoinColumn(name="domaine_id", referencedColumnName="id")
      */
-    private $categories;
+    private $domaine;
 
     /**
      * @var string
@@ -98,7 +98,7 @@ class Domaine
      *
      * @param string $libelle
      *
-     * @return Domaine
+     * @return Categorie
      */
     public function setLibelle($libelle)
     {
@@ -118,27 +118,27 @@ class Domaine
     }
 
     /**
-     * Set nombreCategorie
+     * Set nombreBien
      *
-     * @param integer $nombreCategorie
+     * @param integer $nombreBien
      *
-     * @return Domaine
+     * @return Categorie
      */
-    public function setNombreCategorie($nombreCategorie)
+    public function setNombreBien($nombreBien)
     {
-        $this->nombreCategorie = $nombreCategorie;
+        $this->nombreBien = $nombreBien;
 
         return $this;
     }
 
     /**
-     * Get nombreCategorie
+     * Get nombreBien
      *
-     * @return integer
+     * @return int
      */
-    public function getNombreCategorie()
+    public function getNombreBien()
     {
-        return $this->nombreCategorie;
+        return $this->nombreBien;
     }
 
     /**
@@ -146,7 +146,7 @@ class Domaine
      *
      * @param string $slug
      *
-     * @return Domaine
+     * @return Categorie
      */
     public function setSlug($slug)
     {
@@ -170,7 +170,7 @@ class Domaine
      *
      * @param string $publiePar
      *
-     * @return Domaine
+     * @return Categorie
      */
     public function setPubliePar($publiePar)
     {
@@ -194,7 +194,7 @@ class Domaine
      *
      * @param string $modifiePar
      *
-     * @return Domaine
+     * @return Categorie
      */
     public function setModifiePar($modifiePar)
     {
@@ -218,7 +218,7 @@ class Domaine
      *
      * @param \DateTime $publieLe
      *
-     * @return Domaine
+     * @return Categorie
      */
     public function setPublieLe($publieLe)
     {
@@ -242,7 +242,7 @@ class Domaine
      *
      * @param \DateTime $modifieLe
      *
-     * @return Domaine
+     * @return Categorie
      */
     public function setModifieLe($modifieLe)
     {
@@ -260,45 +260,28 @@ class Domaine
     {
         return $this->modifieLe;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add category
+     * Set domaine
      *
-     * @param \AppBundle\Entity\Categorie $category
+     * @param \AppBundle\Entity\Domaine $domaine
      *
-     * @return Domaine
+     * @return Categorie
      */
-    public function addCategory(\AppBundle\Entity\Categorie $category)
+    public function setDomaine(\AppBundle\Entity\Domaine $domaine = null)
     {
-        $this->categories[] = $category;
+        $this->domaine = $domaine;
 
         return $this;
     }
 
     /**
-     * Remove category
+     * Get domaine
      *
-     * @param \AppBundle\Entity\Categorie $category
+     * @return \AppBundle\Entity\Domaine
      */
-    public function removeCategory(\AppBundle\Entity\Categorie $category)
+    public function getDomaine()
     {
-        $this->categories->removeElement($category);
-    }
-
-    /**
-     * Get categories
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCategories()
-    {
-        return $this->categories;
+        return $this->domaine;
     }
 }
