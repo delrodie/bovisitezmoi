@@ -27,9 +27,11 @@ class BienController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $biens = $em->getRepository('AppBundle:Bien')->findAll();
+        $categories = $em->getRepository("AppBundle:Categorie")->liste()->getQuery()->getResult();
 
         return $this->render('bien/index.html.twig', array(
             'biens' => $biens,
+            'categories' => $categories,
         ));
     }
 
