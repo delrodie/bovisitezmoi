@@ -10,4 +10,8 @@ namespace AppBundle\Repository;
  */
 class PartenaireRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function liste()
+    {
+        return $this->createQueryBuilder('p')->orderBy('p.nom', 'ASC');
+    }
 }

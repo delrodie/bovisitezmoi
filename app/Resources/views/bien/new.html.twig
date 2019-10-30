@@ -1,0 +1,100 @@
+{% extends 'backend.html.twig' %}
+{% block title %}{{ parent() }} Gestion des biens{% endblock %}
+{% block body %}
+    <section class="admin-content">
+        <div class="bg-dark">
+            <div class="container  m-b-30">
+                <div class="row">
+                    <div class="col-12 text-white p-t-40 p-b-90">
+                        <h4 class="">  Gestion des biens</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container  pull-up">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="card m-b-30">
+                        <div class="card-header">
+                            <h5 class="m-b-0">Enregistrement</h5>
+                        </div>
+                        <div class="card-body ">
+                            {{ form_start(form)}}
+                            <div class="form-row">
+                                <div class="col-6 form-group">
+                                    {{ form_widget(form.categorie)}}
+                                    {{ form_errors(form.categorie) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    {{ form_widget(form.titre)}}
+                                    {{ form_errors(form.titre) }}
+                                </div>
+                                <div class="col-12 form-group">
+                                    <label for="">Description</label>
+                                    {{ form_widget(form.description)}}
+                                    {{ form_errors(form.description) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Situation géographique</label>
+                                    {{ form_widget(form.adresse)}}
+                                    {{ form_errors(form.adresse) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Contact</label>
+                                    {{ form_widget(form.telephone)}}
+                                    {{ form_errors(form.telephone) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Site internet</label>
+                                    {{ form_widget(form.website)}}
+                                    {{ form_errors(form.website) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Prix</label>
+                                    {{ form_widget(form.prix)}}
+                                    {{ form_errors(form.prix) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Visite dossier</label>
+                                    {{ form_widget(form.visiteDossier)}}
+                                    {{ form_errors(form.visiteDossier) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Visite lien</label>
+                                    {{ form_widget(form.visiteLien)}}
+                                    {{ form_errors(form.visiteLien) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Partenaire</label>
+                                    {{ form_widget(form.partenaire)}}
+                                    {{ form_errors(form.partenaire) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Mode</label>
+                                    {{ form_widget(form.mode)}}
+                                    {{ form_errors(form.mode) }}
+                                </div>
+                                <div class="col-12 form-group">
+                                    {{ form_widget(form.imageFile)}}
+                                    {{ form_errors(form.imageFile) }}
+                                </div>
+                            </div>
+                            <div class="form-group text-right">
+                                <a href="{{ path('backend_bien_index') }}" class="btn btn-default">Annuler</a>
+                                <button class="btn btn-primary">Enregistrer</button>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src='{{ absolute_url(asset('ressources/assets/bundles/ba78fede76f682cd388ed2abbfd1e1568e76f8a4.js')) }}'></script>
+{% endblock %}

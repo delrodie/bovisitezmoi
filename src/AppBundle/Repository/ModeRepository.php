@@ -10,4 +10,8 @@ namespace AppBundle\Repository;
  */
 class ModeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function liste()
+    {
+        return $this->createQueryBuilder('m')->orderBy('m.libelle', 'ASC');
+    }
 }

@@ -7,15 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-
 /**
- * Partenaire
+ * Bien
  *
- * @ORM\Table(name="partenaire")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PartenaireRepository")
+ * @ORM\Table(name="bien")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\BienRepository")
  * @Vich\Uploadable
  */
-class Partenaire
+class Bien
 {
     /**
      * @var int
@@ -29,23 +28,16 @@ class Partenaire
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="titre", type="string", length=255)
      */
-    private $nom;
+    private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="contact", type="string", length=255, nullable=true)
-     */
-    private $contact;
+    private $description;
 
     /**
      * @var string
@@ -55,21 +47,69 @@ class Partenaire
     private $adresse;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="nombreBien", type="integer", nullable=true)
+     * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
      */
-    private $nombreBien;
+    private $telephone;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Bien", mappedBy="partenaire")
+     * @var string
+     *
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
      */
-    private $biens;
+    private $website;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="prix", type="integer", nullable=true)
+     */
+    private $prix;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="visite_lien", type="string", length=255, nullable=true)
+     */
+    private $visiteLien;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="visite_dossier", type="string", length=255, nullable=true)
+     */
+    private $visiteDossier;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nombre_vue", type="integer", nullable=true)
+     */
+    private $nombreVue;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mode")
+     * @ORM\JoinColumn(name="mode_id", referencedColumnName="id")
+     */
+    private $mode;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Partenaire", inversedBy="biens")
+     * @ORM\JoinColumn(name="partenaire_id", referencedColumnName="id")
+     */
+    private $partenaire;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categorie", inversedBy="biens")
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
+     */
+    private $categorie;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="partenaire_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="bien_image", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
@@ -105,7 +145,7 @@ class Partenaire
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setImageFile(File $image = null)
     {
@@ -131,7 +171,7 @@ class Partenaire
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"nom"})
+     * @Gedmo\Slug(fields={"titre"})
      * @ORM\Column(name="slug", type="string", length=75)
      */
     private $slug;
@@ -169,7 +209,6 @@ class Partenaire
     private $modifieLe;
 
 
-
     /**
      * Get id
      *
@@ -181,75 +220,51 @@ class Partenaire
     }
 
     /**
-     * Set nom
+     * Set titre
      *
-     * @param string $nom
+     * @param string $titre
      *
-     * @return Partenaire
+     * @return Bien
      */
-    public function setNom($nom)
+    public function setTitre($titre)
     {
-        $this->nom = $nom;
+        $this->titre = $titre;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get titre
      *
      * @return string
      */
-    public function getNom()
+    public function getTitre()
     {
-        return $this->nom;
+        return $this->titre;
     }
 
     /**
-     * Set email
+     * Set description
      *
-     * @param string $email
+     * @param string $description
      *
-     * @return Partenaire
+     * @return Bien
      */
-    public function setEmail($email)
+    public function setDescription($description)
     {
-        $this->email = $email;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get description
      *
      * @return string
      */
-    public function getEmail()
+    public function getDescription()
     {
-        return $this->email;
-    }
-
-    /**
-     * Set contact
-     *
-     * @param string $contact
-     *
-     * @return Partenaire
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
-
-        return $this;
-    }
-
-    /**
-     * Get contact
-     *
-     * @return string
-     */
-    public function getContact()
-    {
-        return $this->contact;
+        return $this->description;
     }
 
     /**
@@ -257,7 +272,7 @@ class Partenaire
      *
      * @param string $adresse
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setAdresse($adresse)
     {
@@ -277,27 +292,99 @@ class Partenaire
     }
 
     /**
-     * Set nombreBien
+     * Set telephone
      *
-     * @param integer $nombreBien
+     * @param string $telephone
      *
-     * @return Partenaire
+     * @return Bien
      */
-    public function setNombreBien($nombreBien)
+    public function setTelephone($telephone)
     {
-        $this->nombreBien = $nombreBien;
+        $this->telephone = $telephone;
 
         return $this;
     }
 
     /**
-     * Get nombreBien
+     * Get telephone
+     *
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     *
+     * @return Bien
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param integer $prix
+     *
+     * @return Bien
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
      *
      * @return int
      */
-    public function getNombreBien()
+    public function getPrix()
     {
-        return $this->nombreBien;
+        return $this->prix;
+    }
+
+    /**
+     * Set nombreVue
+     *
+     * @param integer $nombreVue
+     *
+     * @return Bien
+     */
+    public function setNombreVue($nombreVue)
+    {
+        $this->nombreVue = $nombreVue;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreVue
+     *
+     * @return integer
+     */
+    public function getNombreVue()
+    {
+        return $this->nombreVue;
     }
 
     /**
@@ -305,7 +392,7 @@ class Partenaire
      *
      * @param string $imageName
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setImageName($imageName)
     {
@@ -329,7 +416,7 @@ class Partenaire
      *
      * @param integer $imageSize
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setImageSize($imageSize)
     {
@@ -353,7 +440,7 @@ class Partenaire
      *
      * @param \DateTime $updatedAt
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -377,7 +464,7 @@ class Partenaire
      *
      * @param string $slug
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setSlug($slug)
     {
@@ -401,7 +488,7 @@ class Partenaire
      *
      * @param string $publiePar
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setPubliePar($publiePar)
     {
@@ -425,7 +512,7 @@ class Partenaire
      *
      * @param string $modifiePar
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setModifiePar($modifiePar)
     {
@@ -449,7 +536,7 @@ class Partenaire
      *
      * @param \DateTime $publieLe
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setPublieLe($publieLe)
     {
@@ -473,7 +560,7 @@ class Partenaire
      *
      * @param \DateTime $modifieLe
      *
-     * @return Partenaire
+     * @return Bien
      */
     public function setModifieLe($modifieLe)
     {
@@ -491,45 +578,124 @@ class Partenaire
     {
         return $this->modifieLe;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->biens = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add bien
+     * Set mode
      *
-     * @param \AppBundle\Entity\Bien $bien
+     * @param \AppBundle\Entity\Mode $mode
      *
-     * @return Partenaire
+     * @return Bien
      */
-    public function addBien(\AppBundle\Entity\Bien $bien)
+    public function setMode(\AppBundle\Entity\Mode $mode = null)
     {
-        $this->biens[] = $bien;
+        $this->mode = $mode;
 
         return $this;
     }
 
     /**
-     * Remove bien
+     * Get mode
      *
-     * @param \AppBundle\Entity\Bien $bien
+     * @return \AppBundle\Entity\Mode
      */
-    public function removeBien(\AppBundle\Entity\Bien $bien)
+    public function getMode()
     {
-        $this->biens->removeElement($bien);
+        return $this->mode;
     }
 
     /**
-     * Get biens
+     * Set partenaire
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \AppBundle\Entity\Partenaire $partenaire
+     *
+     * @return Bien
      */
-    public function getBiens()
+    public function setPartenaire(\AppBundle\Entity\Partenaire $partenaire = null)
     {
-        return $this->biens;
+        $this->partenaire = $partenaire;
+
+        return $this;
+    }
+
+    /**
+     * Get partenaire
+     *
+     * @return \AppBundle\Entity\Partenaire
+     */
+    public function getPartenaire()
+    {
+        return $this->partenaire;
+    }
+
+    /**
+     * Set visiteLien
+     *
+     * @param string $visiteLien
+     *
+     * @return Bien
+     */
+    public function setVisiteLien($visiteLien)
+    {
+        $this->visiteLien = $visiteLien;
+
+        return $this;
+    }
+
+    /**
+     * Get visiteLien
+     *
+     * @return string
+     */
+    public function getVisiteLien()
+    {
+        return $this->visiteLien;
+    }
+
+    /**
+     * Set visiteDossier
+     *
+     * @param string $visiteDossier
+     *
+     * @return Bien
+     */
+    public function setVisiteDossier($visiteDossier)
+    {
+        $this->visiteDossier = $visiteDossier;
+
+        return $this;
+    }
+
+    /**
+     * Get visiteDossier
+     *
+     * @return string
+     */
+    public function getVisiteDossier()
+    {
+        return $this->visiteDossier;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \AppBundle\Entity\Categorie $categorie
+     *
+     * @return Bien
+     */
+    public function setCategorie(\AppBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \AppBundle\Entity\Categorie
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }

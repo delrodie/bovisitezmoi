@@ -10,4 +10,8 @@ namespace AppBundle\Repository;
  */
 class CategorieRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function liste()
+    {
+        return $this->createQueryBuilder('c')->orderBy('c.libelle', 'ASC');
+    }
 }

@@ -43,6 +43,11 @@ class Categorie
     private $domaine;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Bien", mappedBy="categorie")
+     */
+    private $biens;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
@@ -283,5 +288,46 @@ class Categorie
     public function getDomaine()
     {
         return $this->domaine;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->biens = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add bien
+     *
+     * @param \AppBundle\Entity\Bien $bien
+     *
+     * @return Categorie
+     */
+    public function addBien(\AppBundle\Entity\Bien $bien)
+    {
+        $this->biens[] = $bien;
+
+        return $this;
+    }
+
+    /**
+     * Remove bien
+     *
+     * @param \AppBundle\Entity\Bien $bien
+     */
+    public function removeBien(\AppBundle\Entity\Bien $bien)
+    {
+        $this->biens->removeElement($bien);
+    }
+
+    /**
+     * Get biens
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBiens()
+    {
+        return $this->biens;
     }
 }
