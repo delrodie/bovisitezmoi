@@ -35,6 +35,11 @@
                                     {{ form_widget(form.description)}}
                                     {{ form_errors(form.description) }}
                                 </div>
+                                <div class="col-12 form-group">
+                                    <label for="">Mots clés</label>
+                                        {{ form_widget(form.tags)}}
+                                        {{ form_errors(form.tags) }}
+                                </div>
                                 <div class="col-6 form-group">
                                     <label for="">Situation géographique</label>
                                     {{ form_widget(form.adresse)}}
@@ -50,10 +55,15 @@
                                     {{ form_widget(form.website)}}
                                     {{ form_errors(form.website) }}
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-3 form-group">
                                     <label for="">Prix</label>
                                     {{ form_widget(form.prix)}}
                                     {{ form_errors(form.prix) }}
+                                </div>
+                                <div class="col-3 form-group">
+                                    <label for="">Affichage du prix</label>
+                                    {{ form_widget(form.affichagePrix)}}
+                                    {{ form_errors(form.affichagePrix) }}
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="">Visite dossier</label>
@@ -75,6 +85,16 @@
                                     {{ form_widget(form.mode)}}
                                     {{ form_errors(form.mode) }}
                                 </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Date debut promo</label>
+                                    {{ form_widget(form.debutPromo)}}
+                                    {{ form_errors(form.debutPromo) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Date fin promo</label>
+                                    {{ form_widget(form.finPromo)}}
+                                    {{ form_errors(form.finPromo) }}
+                                </div>
                                 <div class="col-12 form-group">
                                     {{ form_widget(form.imageFile)}}
                                     {{ form_errors(form.imageFile) }}
@@ -94,7 +114,20 @@
         </div>
     </section>
 {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('ressources/vendor/tagsinput/js/bootstrap-tagsinput.css') }}">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+{% endblock %}
 {% block javascripts %}
     {{ parent() }}
     <script src='{{ absolute_url(asset('ressources/assets/bundles/ba78fede76f682cd388ed2abbfd1e1568e76f8a4.js')) }}'></script>
+    <script src="{{ asset('ressources/vendor/tagsinput/js/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("tag-input").tagsinput();
+            $('#appbundle_bien_description').summernote();
+        })
+    </script>
 {% endblock %}

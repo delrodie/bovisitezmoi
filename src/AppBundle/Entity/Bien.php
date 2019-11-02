@@ -42,6 +42,13 @@ class Bien
     /**
      * @var string
      *
+     * @ORM\Column(name="tags", type="string",length=255, nullable=true)
+     */
+    private $tags;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
      */
     private $adresse;
@@ -68,6 +75,13 @@ class Bien
     private $prix;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="affichage_prix", type="boolean", nullable=true)
+     */
+    private $affichagePrix;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="visite_lien", type="string", length=255, nullable=true)
@@ -87,6 +101,20 @@ class Bien
      * @ORM\Column(name="nombre_vue", type="integer", nullable=true)
      */
     private $nombreVue;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="debut_promo", type="string", length=255, nullable=true)
+     */
+    private $debutPromo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fin_promo", type="string", length=255, nullable=true)
+     */
+    private $finPromo;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mode")
@@ -697,5 +725,101 @@ class Bien
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param string $tags
+     *
+     * @return Bien
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Set debutPromo
+     *
+     * @param string $debutPromo
+     *
+     * @return Bien
+     */
+    public function setDebutPromo($debutPromo)
+    {
+        $this->debutPromo = $debutPromo;
+
+        return $this;
+    }
+
+    /**
+     * Get debutPromo
+     *
+     * @return string
+     */
+    public function getDebutPromo()
+    {
+        return $this->debutPromo;
+    }
+
+    /**
+     * Set finPromo
+     *
+     * @param string $finPromo
+     *
+     * @return Bien
+     */
+    public function setFinPromo($finPromo)
+    {
+        $this->finPromo = $finPromo;
+
+        return $this;
+    }
+
+    /**
+     * Get finPromo
+     *
+     * @return string
+     */
+    public function getFinPromo()
+    {
+        return $this->finPromo;
+    }
+
+    /**
+     * Set affichagePrix
+     *
+     * @param boolean $affichagePrix
+     *
+     * @return Bien
+     */
+    public function setAffichagePrix($affichagePrix)
+    {
+        $this->affichagePrix = $affichagePrix;
+
+        return $this;
+    }
+
+    /**
+     * Get affichagePrix
+     *
+     * @return boolean
+     */
+    public function getAffichagePrix()
+    {
+        return $this->affichagePrix;
     }
 }

@@ -10,4 +10,8 @@ namespace AppBundle\Repository;
  */
 class BienRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findListeDesc()
+    {
+        return $this->createQueryBuilder('b')->orderBy('b.id','DESC')->getQuery()->getResult();
+    }
 }

@@ -48,28 +48,43 @@
                             <div class="p-b-10 text-center">
                                 <img class="rounded" src="{{ vich_uploader_asset(bien, 'imageFile') }}" alt="">
                             </div>
-                            <p>
-                                {{ bien.description|raw}}
 
-                            </p>
-
-                            <p class="mb-4">
-                                 <!--<a href="#!" class="badge badge-soft-primary">@Marinela</a>
-                                <a href="#!" class="badge badge-soft-primary">@Demkó</a>-->
-                            </p>
-
-                            <div class="row">
+                            <div class="row mt-5">
                                 <div class="col">
                                     <div class="opacity-75">
                                         <a href="{{ path('backend_bien_index') }}" class="m-r-5">
-                                            <i class="fa fa-reply"></i>
+                                            <i class="fa fa-reply fa-lg"></i>
                                         </a>
                                         <a href="{{ path('backend_bien_edit', {'slug': bien.slug}) }}" class="m-r-5">
-                                            <i class="fa fa-edit"></i>
+                                            <i class="fa fa-edit fa-lg"></i>
                                         </a>
+                                        {% if bien.mode.libelle == "Promotion" %}
+                                            <a href="#"><span class="badge badge-primary">Promotion</span>{{ bien.debutPromo|date('d-m-Y') }} / {{ bien.finPromo|date('d-m-Y') }}</a>
+                                        {% endif %}
                                     </div>
                                 </div>
+                                <div class="col-auto d-flex align-items-center">
+                                    {% if bien.visiteLien %}
+                                        <a href="{{ bien.visiteLien}}" class="" target="_blank">
+                                            <i class="fa fa-street-view fa-2x"></i>
+                                        </a>
+                                    {% elseif bien.visiteDossier %}
+                                        <a href="{{ asset('visiteguidee/'~bien.visiteDossier~'/index.html') }}" class="">
+                                            <i class="fa fa-cube fa-2x"></i>
+                                        </a>
+                                    {% else %}
+                                    {% endif %}
+                                </div>
                             </div>
+                            <p class="text-justify">
+                                {{ bien.description|raw}}
+                            </p>
+
+                            <p class="mb-4">
+                                {% for tag in bien.tags|split(',') %}
+                                    <a href="#!" class="badge badge-soft-primary">{{ tag }}</a>
+                                {% endfor %}
+                            </p>
                         </div>
                     </div>
 
@@ -98,7 +113,7 @@
                             {% endif %}
                             {% if bien.prix %}
                                 <div class="list-group-item ">
-                                    <i class="fa fa-money-bill"></i>  <a href="#" class="text-underline"> {{ bien.prix}}</a>
+                                    <i class="fa fa-money-bill"></i>  <a href="#" class="text-underline"> {{ bien.prix|number_format(0,'','.')}}</a> (visible)
                                 </div>
                             {% endif %}
                         </div>
