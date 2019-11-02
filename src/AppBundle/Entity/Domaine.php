@@ -43,6 +43,11 @@ class Domaine
     private $categories;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Caroussel", mappedBy="domaine")
+     */
+    private $slides;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})
@@ -300,5 +305,39 @@ class Domaine
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add slide
+     *
+     * @param \AppBundle\Entity\Caroussel $slide
+     *
+     * @return Domaine
+     */
+    public function addSlide(\AppBundle\Entity\Caroussel $slide)
+    {
+        $this->slides[] = $slide;
+
+        return $this;
+    }
+
+    /**
+     * Remove slide
+     *
+     * @param \AppBundle\Entity\Caroussel $slide
+     */
+    public function removeSlide(\AppBundle\Entity\Caroussel $slide)
+    {
+        $this->slides->removeElement($slide);
+    }
+
+    /**
+     * Get slides
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSlides()
+    {
+        return $this->slides;
     }
 }
