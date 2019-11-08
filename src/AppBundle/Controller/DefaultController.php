@@ -13,8 +13,30 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $sliders = $em->getRepository("AppBundle:Slider")->findList(); //dump($sliders);die();
+        $domaines = $em->getRepository("AppBundle:Domaine")->liste()->getQuery()->getResult();
+        $categories = $em->getRepository("AppBundle:Categorie")->liste()->getQuery()->getResult();
+        $biens = $em->getRepository("AppBundle:Bien")->findListeDesc();
         // replace this example code with whatever you need
-        return $this->render('default/maintenance.html.twig');
+        return $this->render('default/index.html.twig',[
+            'sliders' => $sliders,
+            'domaines' => $domaines,
+            'categories' => $categories,
+            'biens' => $biens,
+        ]);
+    }
+
+    /**
+     * @Route("/menu", name="menu")
+     */
+    public function menuAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $menus = $em->getRepository("AppBundle:Domaine")->liste()->getQuery()->getResult();
+        return $this->render("default/menu.html.twig",[
+            'menus' => $menus,
+        ]);
     }
 
     /**

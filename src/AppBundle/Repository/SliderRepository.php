@@ -17,4 +17,17 @@ class SliderRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->createQueryBuilder('s')->orderBy('s.id', 'DESC')->getQuery()->getResult();
     }
+
+    /**
+     *
+     */
+    public function findList()
+    {
+        return $this->createQueryBuilder('s')
+                    ->where(':periode BETWEEN s.dateDebut AND s.dateFin')
+                    ->andWhere('s.statut = 1')
+                    ->setParameter('periode', date('m/d/Y',time()))
+                    ->getQuery()->getResult()
+            ;
+    }
 }

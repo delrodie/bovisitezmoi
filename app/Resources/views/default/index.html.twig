@@ -1,11 +1,290 @@
 {% extends 'base.html.twig' %}
-
-{% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <a href="{{ path('backend_dashboard') }}">Backoffice</a>
-
-        </div>
-    </div>
+{% block title %}
+	Visitez moi: la plateforme de visite guidée 360° et 3D
 {% endblock %}
+{% block meta %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+{% endblock %}
+{% block slider %}
+<style type="text/css">
+	{% for slider in sliders %}
+	.flexslider.top_slider .slide{{loop.index}} {
+		width:100%;
+		background-color:#085e11;
+		background-image:url({{ asset(vich_uploader_asset(slider, 'imageFile') ) }});
+		background-size:cover;
+	}
+	{% endfor %}
+</style>
+{% endblock %}
+{% block body %}
+			<section id="home" class="padbot0 margbot30">
+
+				<!-- TOP SLIDER -->
+				<div class="flexslider top_slider">
+					<ul class="slides">
+						{% for slide in sliders %}
+							<li class="slide{{loop.index}}" onmouseup="stop()">
+								<div class="container">
+									<a class="flex_caption2" href="{{ path('maquette_details')}}" onmouseup="stop()" ><div class="middle">Faites<span>la visite</span>guidée</div></a>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</section>
+			<section class="banner_section">
+
+				<!-- CONTAINER -->
+				<div class="container" data-appear-top-offset='-100' data-animated='fadeInUp'>
+
+					<!-- ROW -->
+					<div class="row">
+						<div class="top_sale_banners center">
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ss-12 overlay-image">
+								<a class="banner nobord margbot30" href="javascript:void(0);" >
+									<img src="{{ asset('img/bg/fond1.jpg') }}" alt="" class="" />
+									<div class="normal">
+										<div class="text">Nouveautés</div>
+									</div>
+									<div class="hover">
+										<div class="text valeur">25</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ss-12 overlay-image">
+								<a class="banner nobord margbot30" href="javascript:void(0);" >
+									<img src="{{ asset('img/bg/fond2.jpg') }}" alt="" class="image" />
+									<div class="normal">
+										<div class="text">Plus visités</div>
+									</div>
+									<div class="hover">
+										<div class="text valeur">45</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ss-12 overlay-image">
+								<a class="banner nobord margbot30" href="javascript:void(0);" >
+									<img src="{{ asset('img/bg/fond3.jpg') }}" alt="" class="image" />
+									<div class="normal">
+										<div class="text">Events</div>
+									</div>
+									<div class="hover">
+										<div class="text valeur">1</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div><!-- //ROW -->
+				</div><!-- //CONTAINER -->
+			</section>
+			<section>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-9">
+							<div class="row domaine mt50">
+								{% for domaine in domaines %}
+									<a href="{{ path('maquette_page') }}">
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 pb10 overlay-domaine">
+											<div class="content">
+												{{ domaine.libelle|title}}
+											</div>
+										</div>
+									</a>
+								{% endfor %}
+							</div>
+							<!--<div class="row mt50">
+								<div class="col-md-12 text-center">
+									<iframe style="max-width: 100%;" width="550" height="480" frameborder="0" allowfullscreen src="https://players.cupix.com/embed.html?key=V6p8vlYb"></iframe>
+								</div>
+							</div>-->
+						</div>
+						<div id="sidebar" class="col-lg-3 col-md-3 col-sm-3 padbot50 mt50">
+							<div class="sidepanel widget_popular_posts padbot10">
+								<form action="" class="padbot20">
+									<select name="" id="" class="form-control">
+										<option value="">-- Selectionnez la catégorie --</option>
+										{% for categorie in categories %}
+											<option value="{{ categorie.slug }}">{{ categorie.libelle}}</option>
+										{% endfor %}
+									</select>
+								</form>
+								<ul>
+									{% for bien in biens|slice(0,4) %}
+										<li class="widget_popular_post_item clearfix">
+											<a class="widget_popular_post_img" href="{{ path('maquette_details')}}" ><img src="{{ asset('img/categorie/01_categorie.JPG') }}" alt="" /></a>
+											<a class="widget_popular_post_title" href="{{ path('maquette_details')}}" >{{ bien.titre}}</a>
+											<!--<span class="widget_popular_post_date">13 January 2014</span>-->
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="container">
+					<div class="row avantages">
+						<div class="col-md-3">
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="text-center" style="text-transform: capitalize"></h2>
+									<p class="text-justify avantage" style="font-size: 1.6em; font-style: italic; text-align: center">
+										<span style="color: purple"><i class="fa fa-check fa-lg"></i></span> <br> <a href="#">Plus de visibilité - Diffusion multi-supports</a>
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="text-center"></h2>
+									<p class="text-justify avantage" style="font-size: 1.6em; font-style: italic; text-align: center">
+										<span style="color: purple"><i class="fa fa-check fa-lg"></i></span> <br> <a href="#">Modernité et innovation</a>
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="text-center"></h2>
+									<p class="text-justify avantage" style="font-size: 1.6em; font-style: italic; text-align: center">
+										<span style="color: purple"><i class="fa fa-check fa-lg"></i></span> <br> <a href="#">Renforcer la relation client</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 text-center">
+							<img src="{{ asset('img/bg-service-01.jpg') }}" alt="">
+						</div>
+						<div class="col-md-3">
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="text-center"></h2>
+									<p class="text-justify avantage" style="font-size: 1.6em; font-style: italic; text-align: center;">
+										<span style="color: purple"><i class="fa fa-check fa-lg"></i></span> <br> <a href="#">Interaction et immersive</a>
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="text-center"></h2>
+									<p class="text-justify avantage" style="font-size: 1.6em; font-style: italic; text-align: center">
+										<span style="color: purple"><i class="fa fa-check fa-lg"></i></span> <br><a href="#">Crédibilité et notoriété</a>
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="text-center"></h2>
+									<p class="text-justify avantage" style="font-size: 1.6em; font-style: italic; text-align: center">
+										<span style="color: purple"><i class="fa fa-check fa-lg"></i></span> <br> <a href="#">Google Map</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section style="background: #000 url({{ asset('img/bg/parallax-01.jpg') }}) 0 0 no-repeat fixed;">
+				<div class="presentation">
+					<div class="container">
+						<div class="row services">
+							<div class="col-md-6">
+								<h2>Visites virtuelles pour tout type d'établissement</h2>
+								<p class="text-justify">
+									Démarquez-vous de la concurrence grâce à nos visites virtuelles hautes définitions accessible sur tous les supports.
+									Séduisez vos futurs clients avec des enrichissements uniques de vos visites virtuelles
+									Offrez une expérience unique aux internautes et valorisez votre établissement.
+									Augmentez vos ventes grâce à un concept esthétique, moderne et innovant.
+
+								</p>
+							</div>
+							<div class="col-md-6">
+								<h2>Visites virtuelles immobilières </h2>
+								<p class="text-justify">
+									Vous êtes propriétaire d’un bien immobilier ou une agence immobilière ou démarcheur ayant mandat sur un bien immobilier, donnez de la valeur à votre bien en proposant une visite virtuelle réaliser gratuitement par visitezmoi.ci.
+									Notre concept vous permet de gagner en efficacité en vous évitant de perdre de l’argent et du temps par des visites inutiles.
+									Vous pourrez grâce à la visite virtuelle immobilière répondre avec précision  aux besoins  d’une clientèle de meilleur qualité et véritablement motivée, afin de leur apporter une entière satisfaction.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="container">
+					<div class="row modes">
+						<div class="col-md-1"></div>
+						<div class="col-md-10">
+							<div class="row">
+								<div class="col-md-12">
+									<h1 class="text-center">Mode opératoire</h1>
+								</div>
+							</div>
+							<div class="row mode-operatoire">
+								<div class="col-md-4 col-sm-4 col-xs-4 text-center">
+									<img src="{{ asset('img/mode/mode-01.jpg') }}" alt="">
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-8 text-center">
+									<h2 class="text-center">Prise de rendez-vous</h2>
+									<p class="text-justify">
+										Vous nous contactez par mail ou appel, après analyse de vos besoins nous fixons un RDV pour la prise de vues de vos espaces.
+									</p>
+								</div>
+							</div>
+							<div class="row mode-operatoire">
+								<div class="col-md-8 col-sm-8 col-xs-8 text-center">
+									<h2 class="text-center">Prise de vues</h2>
+									<p class="text-justify">
+										Nous venons réaliser les captations des images à l’aide de notre caméra 360°. Les prises de vues peuvent durer plus ou moins  d’1 heure de temps selon la surface.
+									</p>
+								</div>
+								<div class="col-md-4 col-sm-4 col-xs-4 text-center">
+									<img src="{{ asset('img/mode/mode-02.jpg') }}" alt="">
+								</div>
+							</div>
+							<div class="row mode-operatoire">
+								<div class="col-md-4 col-sm-4 col-xs-4 text-center">
+									<img src="{{ asset('img/mode/mode-03.jpg') }}" alt="">
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-8 text-center">
+									<h2 class="text-center">Création de visite virtuelle</h2>
+									<p class="text-justify">
+										De retour au bureau nos experts procèdent à la création et l’enrichissement de la visite virtuelle selon les besoins exprimés lors de notre RDV.
+									</p>
+								</div>
+							</div>
+							<div class="row mode-operatoire">
+								<div class="col-md-8 col-sm-8 col-xs-8 text-center">
+									<h2 class="text-center">Diffusion – intégration</h2>
+									<p class="text-justify">
+										La création terminée votre visite est immédiatement disponible sur notre plateforme visitezmoi.ci.
+										Vous recevrez par mail un lien ou un dossier de la visite virtuelle que vous pouvez intégrer sur votre site internet.
+
+									</p>
+								</div>
+								<div class="col-md-4 col-sm-4 col-xs-4 text-center">
+									<img src="{{ asset('img/mode/mode-04.jpg') }}" alt="">
+								</div>
+							</div>
+							<div class="row mode-operatoire">
+								<div class="col-md-4 col-sm-4 col-xs-4 text-center">
+									<img src="{{ asset('img/mode/mode-05.jpg') }}" alt="">
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-8 text-center">
+									<h2 class="text-center">Expérience utilisateur</h2>
+									<p class="text-justify">
+										Pour bénéficier d’une expérience utilisateur unique vous devez vous connecter pour avoir un listing historique de vos visites virtuelles et un listing favoris de vos visites virtuelles que vous pouvez visualiser à souhait. Vous pouvez être averti par mail ou sms des nouvelles visites virtuelles réalisées.
+										Achat d’un pass de jetons est nécessaire pour visualiser les visites virtuelles immobilières avec une valeur de jetons différente de 0 (zéro).
+
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		{% endblock %}
 

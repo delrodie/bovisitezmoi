@@ -1,0 +1,39 @@
+<div class="love_list">
+	<a class="love_list_btn" href="javascript:void(0);" ><i class="icofont-money-bag icofont-1x"></i><p>Jetons</p><span>0</span></a>
+	<div class="cart">
+		<div class="cart_total">
+			<a class="btn active" href="#">Acheter</a>
+		</div>
+	</div>
+</div>
+<ul class="navmenu center">
+	<li class="first"><a href="{{ absolute_url(path('homepage')) }}" >Accueil</a></li>
+	<li class="sub-menu"><a href="javascript:void(0);" >Toutes les catégories</a>
+		<ul class="mega_menu megamenu_col3 clearfix">
+			<li class="col">
+				<ol>
+					{% for menu in menus|slice(0,4) %}
+						<li><a href="{{ path('maquette_page') }}" >{{ menu.libelle}}</a></li>
+					{% endfor %}
+				</ol>
+			</li>
+			<li class="col">
+				<ol>
+					{% for menu in menus|slice(5,4) %}
+						<li><a href="{{ path('maquette_page') }}" >{{ menu.libelle}}</a></li>
+					{% endfor %}
+				</ol>
+			</li>
+			<li class="col">
+				<ol>
+					{% for menu in menus|slice(9,4) %}
+						<li><a href="{{ path('maquette_page') }}" >{{ menu.libelle}}</a></li>
+					{% endfor %}
+				</ol>
+			</li>
+		</ul>
+	</li>
+	<!--<li ><a href="javascript:void(0);" >FAQ</a></li>
+	<li class=""><a href="#" >Contact</a></li>-->
+	<li class="last"><a href="#" title="Se connecter" ><i class="fa fa-user fa-lg"></i> Connexion</a></li>
+</ul>
