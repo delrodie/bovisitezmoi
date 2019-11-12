@@ -15,7 +15,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $sliders = $em->getRepository("AppBundle:Slider")->findList(); //dump($sliders);die();
-        if (!$sliders) return $this->redirectToRoute("maquette_index");
+        if (!$sliders) return $this->redirectToRoute("frontebd_maintenance");
         $domaines = $em->getRepository("AppBundle:Domaine")->liste()->getQuery()->getResult();
         $categories = $em->getRepository("AppBundle:Categorie")->liste()->getQuery()->getResult();
         $biens = $em->getRepository("AppBundle:Bien")->findListeDesc();
