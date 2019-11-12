@@ -117,6 +117,13 @@ class Bien
     private $finPromo;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="google_map", type="string", length=255, nullable=true)
+     */
+    private $googleMap;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mode")
      * @ORM\JoinColumn(name="mode_id", referencedColumnName="id")
      */
@@ -144,7 +151,7 @@ class Bien
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
@@ -821,5 +828,29 @@ class Bien
     public function getAffichagePrix()
     {
         return $this->affichagePrix;
+    }
+
+    /**
+     * Set googleMap
+     *
+     * @param string $googleMap
+     *
+     * @return Bien
+     */
+    public function setGoogleMap($googleMap)
+    {
+        $this->googleMap = $googleMap;
+
+        return $this;
+    }
+
+    /**
+     * Get googleMap
+     *
+     * @return string
+     */
+    public function getGoogleMap()
+    {
+        return $this->googleMap;
     }
 }

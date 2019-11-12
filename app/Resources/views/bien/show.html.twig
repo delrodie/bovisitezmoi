@@ -35,7 +35,7 @@
                         <div class="card-header">
                             <div class="media">
                                 <div class="media-body m-auto">
-                                    <h5 class="m-0"> {{ bien.titre }} </h5>
+                                    <h5 class="m-0"><span class="badge badge-primary">{{ bien.categorie.libelle }}</span> {{ bien.titre }} </h5>
                                     <div class="opacity-75 text-muted">{{ bien.publiePar|title}} | {{ bien.publieLe|date('d-m-Y') }}</div>
                                 </div>
                             </div>

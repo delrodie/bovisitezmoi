@@ -107,13 +107,13 @@
 										</div>
 										<div class="tovar_item_btns">
 											<div class="">
-												<a class="open-project tovar_view" href="{{ path('maquette_details')}}"><span>Voir</span></a>
+												<a class="open-project tovar_view" href="{{ path('frontend_bien_show', {'categorie': bien.categorie.slug, 'slug': bien.slug}) }}"><span>Voir</span></a>
 											</div>
 										</div>
 									</div>
 									<div class="tovar_description clearfix">
-										<a class="tovar_title" href="#" ><span class="badge" style="font-size: 0.9em; text-transform: capitalize">Pharmacie</span><br> bel appart 4 pièces ultra moderne avec accesseur</a>
-										<span class="tovar_price"><i class="fa fa-map-marker fa-2x" aria-hidden="true" title="Cocody Angre"></i></span>
+										<a class="tovar_title" href="{{ path('frontend_bien_show', {'categorie': bien.categorie.slug, 'slug': bien.slug}) }}" ><span class="badge" style="font-size: 0.9em; text-transform: capitalize">{{ bien.categorie.libelle}}</span><br> {{ bien.titre}}</a>
+										<span class="tovar_price"><i class="fa fa-map-marker fa-2x" aria-hidden="true" title="{{ bien.adresse}}"></i></span>
 									</div>
 								</div>
 							</div>
@@ -124,8 +124,7 @@
 					<hr>
 
 					<div class="clearfix">
-						<!-- PAGINATION -->
-						<ul class="pagination">
+						<!--<ul class="pagination">
 							<li><a href="javascript:void(0);" >1</a></li>
 							<li><a href="javascript:void(0);" >2</a></li>
 							<li class="active"><a href="javascript:void(0);" >3</a></li>
@@ -133,7 +132,7 @@
 							<li><a href="javascript:void(0);" >5</a></li>
 							<li><a href="javascript:void(0);" >6</a></li>
 							<li><a href="javascript:void(0);" >...</a></li>
-						</ul><!-- //PAGINATION -->
+						</ul>-->
 
 
 					</div>

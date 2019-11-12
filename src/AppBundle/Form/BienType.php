@@ -33,12 +33,13 @@ class BienType extends AbstractType
             ->add('tags', TextType::class,['attr'=>['class'=>'form-control tag-input', 'placeholder'=>"Les mots clés", 'autocomplete'=>"off",'data-role' => "tagsinput",], 'required'=>true])
             ->add('debutPromo', TextType::class,['attr'=>['class'=>'js-datepicker form-control', 'placeholder'=>"La date debut de la promotion", 'autocomplete'=>"off"], 'required'=>false])
             ->add('finPromo', TextType::class,['attr'=>['class'=>'js-datepicker form-control', 'placeholder'=>"La date fin de la promotion", 'autocomplete'=>"off"], 'required'=>false])
+            ->add('googleMap', TextType::class,['attr'=>['class'=>'form-control', 'placeholder'=>"Lien google map", 'autocomplete'=>"off"], 'required'=>false])
             ->add('affichagePrix', ChoiceType::class,[
                 'choices'=>['OUI'=>true, 'NON'=>false],
                 'attr'=>['class'=>'form-control']
             ])
             ->add('imageFile', VichImageType::class,[
-                'required'=> true,
+                'required'=> false,
                 'allow_delete' => true,
                 'label'=>'.'
             ])
