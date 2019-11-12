@@ -86,7 +86,7 @@
 						<div class="col-md-9">
 							<div class="row domaine mt50">
 								{% for domaine in domaines %}
-									<a href="{{ path('maquette_page') }}">
+									<a href="{{ absolute_url(path('frontend_domaine_show', {'slug': domaine.slug})) }}" title="Voir les biens ">
 										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 pb10 overlay-domaine">
 											<div class="content">
 												{{ domaine.libelle|title}}

@@ -13,21 +13,21 @@
 			<li class="col">
 				<ol>
 					{% for menu in menus|slice(0,4) %}
-						<li><a href="{{ path('maquette_page') }}" >{{ menu.libelle}}</a></li>
+						<li><a href="{{ absolute_url(path('frontend_domaine_show', {'slug': menu.slug})) }}" >{{ menu.libelle}}</a></li>
 					{% endfor %}
 				</ol>
 			</li>
 			<li class="col">
 				<ol>
 					{% for menu in menus|slice(5,4) %}
-						<li><a href="{{ path('maquette_page') }}" >{{ menu.libelle}}</a></li>
+						<li><a href="{{ absolute_url(path('frontend_domaine_show', {'slug': menu.slug})) }}" >{{ menu.libelle}}</a></li>
 					{% endfor %}
 				</ol>
 			</li>
 			<li class="col">
 				<ol>
 					{% for menu in menus|slice(9,4) %}
-						<li><a href="{{ path('maquette_page') }}" >{{ menu.libelle}}</a></li>
+						<li><a href="{{ absolute_url(path('frontend_domaine_show', {'slug': menu.slug})) }}" >{{ menu.libelle}}</a></li>
 					{% endfor %}
 				</ol>
 			</li>

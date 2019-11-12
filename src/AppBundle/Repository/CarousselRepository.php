@@ -14,4 +14,14 @@ class CarousselRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->createQueryBuilder('c')->orderBy('c.id','DESC')->getQuery()->getResult();
     }
+
+    public function findList($domaine)
+    {
+        return $this->createQueryBuilder('c')
+                    ->where('c.domaine = :id')
+                    ->andWhere('c.statut = 1')
+                    ->setParameter('id', $domaine)
+                    ->getQuery()->getResult()
+            ;
+    }
 }

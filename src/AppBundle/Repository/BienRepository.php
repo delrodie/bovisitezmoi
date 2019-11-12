@@ -14,4 +14,21 @@ class BienRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->createQueryBuilder('b')->orderBy('b.id','DESC')->getQuery()->getResult();
     }
+
+    /**
+     * FrCategorieController:indexAction
+     * @param $domaine
+     * @return array
+     */
+    public function findByDomaine($domaine)
+    {
+        return $this->createQueryBuilder('b')
+                    ->leftJoin('b.categorie', 'c')
+                    ->leftJoin('c.domaine', 'd')
+                    ->where('d.id = :id')
+                    ->orderBy('b.id', 'DESC')
+                    ->setParameter('id', $domaine)
+                    ->getQuery()->getResult()
+            ;
+    }
 }
