@@ -28,7 +28,7 @@
 						{% for slide in sliders %}
 							<li class="slide{{loop.index}}" onmouseup="stop()">
 								<div class="container">
-									<a class="flex_caption2" href="{{ path('maquette_details')}}" onmouseup="stop()" ><div class="middle">Faites<span>la visite</span>guidée</div></a>
+									<a class="flex_caption2" href="{{ slide.lien}}" onmouseup="stop()" ><div class="middle">Faites<span>la visite</span>guidée</div></a>
 								</div>
 							</li>
 						{% endfor %}
