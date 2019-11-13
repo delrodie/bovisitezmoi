@@ -103,8 +103,8 @@
 						</div>
 						<div id="sidebar" class="col-lg-3 col-md-3 col-sm-3 padbot50 mt50">
 							<div class="sidepanel widget_popular_posts padbot10">
-								<form action="" class="padbot20">
-									<select name="" id="" class="form-control">
+								<form action="{{ path('frontend_recherche_categorie') }}" class="padbot20" method="POST">
+									<select name="categorie" id="categorie" class="form-control" onchange="this.form.submit()">
 										<option value="">-- Selectionnez la catégorie --</option>
 										{% for categorie in categories %}
 											<option value="{{ categorie.slug }}">{{ categorie.libelle}}</option>

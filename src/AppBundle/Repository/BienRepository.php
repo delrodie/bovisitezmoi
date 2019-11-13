@@ -31,4 +31,20 @@ class BienRepository extends \Doctrine\ORM\EntityRepository
                     ->getQuery()->getResult()
             ;
     }
+
+    /**
+     * FrBienController:rechercheAction
+     * @param $categorie
+     * @return array
+     */
+    public function findByCategorie($categorie)
+    {
+        return $this->createQueryBuilder('b')
+                    ->leftJoin('b.categorie', 'c')
+                    ->where('c.slug = :categorie')
+                    ->orderBy('b.id', 'DESC')
+                    ->setParameter('categorie', $categorie)
+                    ->getQuery()->getResult()
+            ;
+    }
 }

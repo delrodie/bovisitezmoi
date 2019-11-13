@@ -32,4 +32,6 @@ class FrCategorieController extends Controller
             'biens' => $biens,
         ]);
     }
+
+
 }

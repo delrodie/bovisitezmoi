@@ -84,12 +84,12 @@
 						<div class="col-md-6">
 							<div class="">
 								<div class="widget_search">
-									<form class="search_form" action="javascript:void(0);" method="get" name="search_form">
-										<select name="" id="" class="form-control">
+									<form class="search_form" action="{{ path('frontend_recherche_categorie') }}" method="post" name="search_form">
+										<select name="categorie" id="categorie" class="form-control" onchange="this.form.submit()">
 											<option value="" class="text-center"> --- Selectionnez la sous catégorie concernée ---</option>
 											<option value=""></option>
 											{% for categorie in domaine.categories if categorie.nombreBien %}
-												<option value="{{ domaine.slug }}">{{ categorie.libelle }}</option>
+												<option value="{{ categorie.slug }}">{{ categorie.libelle }}</option>
 											{% endfor %}
 										</select>
 									</form>
