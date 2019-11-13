@@ -3530,11 +3530,11 @@ table tr.cart_item td.product-subtotal {
 
 .wrapper404 {
 	float:right;
-	width:570px;
+	width:770px;
 	padding-right:30px;
 	padding-left:30px;
 	text-align:center;
-	color:#fff;
+	color:#42115E;
 }
 .wrapper404 h1 {
 	margin:0;
@@ -3542,7 +3542,7 @@ table tr.cart_item td.product-subtotal {
 	font-weight:900;
 	line-height:136px;
 	font-size:130px;
-	color:#fff;
+	color:#42115E;
 }
 .wrapper404 h2 {
 	position:relative;
@@ -3551,7 +3551,7 @@ table tr.cart_item td.product-subtotal {
 	font-weight:300;
 	line-height:40px;
 	font-size:40px;
-	color:#fff;
+	color:#FBC210;
 }
 .wrapper404 h2:before {
 	content:'';
@@ -3561,11 +3561,11 @@ table tr.cart_item td.product-subtotal {
 	width:50px;
 	height:2px;
 	margin-left:-25px;
-	background-color:#fff;
+	background-color:#FBC210;
 }
 .wrapper404 p {
 	margin:0 0 44px;
-	text-transform:uppercase;
+	/*text-transform:uppercase;*/
 	line-height:24px;
 	font-size:20px;
 }
@@ -5427,7 +5427,7 @@ input[type="submit"]:hover {background-color:#242424;}
 /*	PAGE 404
 /*-----------------------------------------------------------------------------------*/
 	.page404 {min-height:400px;}
-	.wrapper404 {width:290px; padding:130px 0 40px;}
+	.wrapper404 {width:290px; padding:10px 0 0px;}
 	.wrapper404 h1 {font-size:70px; line-height:70px;}
 	.wrapper404 h2 {font-size:24px; line-height:26px; margin-bottom:10px; padding-bottom:10px;}
 	.wrapper404 p {font-size:13px; line-height:20px; margin-bottom:20px;}
