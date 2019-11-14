@@ -114,8 +114,9 @@
 								<ul>
 									{% for bien in biens|slice(0,4) %}
 										<li class="widget_popular_post_item clearfix">
-											<a class="widget_popular_post_img" href="{{ path('frontend_bien_show', {'categorie': bien.categorie.slug, 'slug': bien.slug}) }}" ><img src="{{ asset('img/categorie/01_categorie.JPG') }}" alt="" /></a>
+											<a class="widget_popular_post_img" href="{{ path('frontend_bien_show', {'categorie': bien.categorie.slug, 'slug': bien.slug}) }}" ><img src="{{ asset('uploads/biens/'~ bien.imageName) | imagine_filter('bien_petit') }}" alt="{{ bien.titre }}" /></a>
 											<a class="widget_popular_post_title" href="{{ path('frontend_bien_show', {'categorie': bien.categorie.slug, 'slug': bien.slug})}}" >{{ bien.titre}}</a>
+											<span class="widget_popular_post_date">{{ bien.publieLe|date('d-m-Y')}}</span>
 										</li>
 									{% endfor %}
 								</ul>
