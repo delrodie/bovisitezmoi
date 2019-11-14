@@ -64,4 +64,22 @@ class GestionBien
         }
         return false;
     }
+
+    /**
+     * @param $slug
+     * @return bool
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function addVue($slug)
+    {
+        $bien = $this->em->getRepository("AppBundle:Bien")->findOneBy(['slug'=>$slug]);
+        if ($bien)
+        {
+            $bien->setNombreVue($bien->getNombreVue()+1);
+            $this->em->flush();
+
+            return true;
+        }
+        return false;
+    }
 }

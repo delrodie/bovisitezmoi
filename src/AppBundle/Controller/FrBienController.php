@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Utilities\GestionBien;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -43,10 +44,11 @@ class FrBienController extends Controller
      * @Route("/{categorie}/{slug}", name="frontend_bien_show")
      * @Method("GET")
      */
-    public function showAction(Request $request, $categorie, $slug)
+    public function showAction(Request $request, $categorie, $slug, GestionBien $gestionBien)
     {
         $em = $this->getDoctrine()->getManager();
         $bien = $em->getRepository("AppBundle:Bien")->findOneBy(['slug'=>$slug]);
+        $gestionBien->addVue($slug); //dump($bien);die();
 
         return $this->render("frontend/details.html.twig",[
             'bien' => $bien

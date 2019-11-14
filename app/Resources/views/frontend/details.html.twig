@@ -24,7 +24,7 @@
 						{% if bien.visiteDossier %}
 							<li><i class="fa fa-street-view fa-2x"></i>Visite guidée</li>
 						{% endif %}
-						{% if bien.nombreVue|length > 1 %}
+						{% if bien.nombreVue > 1 %}
 							<li><i class="fa fa-eye fa-lg"></i>{{ bien.nombreVue}} vues </li>
 						{% endif %}
 					</ul>
