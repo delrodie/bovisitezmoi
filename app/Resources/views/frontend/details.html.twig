@@ -20,9 +20,10 @@
 					<span class="badge badge-primary">{{ bien.categorie.libelle }}</span>
 					<div class="bien-titre">{{ bien.titre}}</div>
 					<ul class="bien_meta pull-right">
-						<!--<li><i class="fa fa-user"></i><a href="javascript:void(0);" >Anna Balashova</a></li>-->
 						{% if bien.visiteDossier %}
-							<li><i class="fa fa-street-view fa-2x"></i>Visite guidée</li>
+							<a href="{{ absolute_url(asset('visiteguidee/'~bien.visiteDossier~'/index.html'))}}" class="fancybox fancybox.iframe" title="Visite guidée">
+								<li><i class="fa fa-street-view fa-2x"></i>Visite guidée</li>
+							</a>
 						{% endif %}
 						{% if bien.nombreVue > 1 %}
 							<li><i class="fa fa-eye fa-lg"></i>{{ bien.nombreVue}} vues </li>
@@ -34,15 +35,17 @@
 	</section>
 	<section class="contacts_block">
 
-		<!-- CONTAINER -->
 		<div class="container">
 
-			<!-- ROW -->
 			<div class="row padbot30">
 				<div class="col-lg-6 col-md-6 padbot30">
 					{% if bien.googleMap %}
 						<div id="map">
 							<iframe src="{{ bien.googleMap}}" width="600" height="500" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+						</div>
+					{% else %}
+						<div id="map">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1986.0561616476339!2d-4.000887957046322!3d5.399853829143264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc194bdbdaa6907%3A0x7e17ba45ba010bf1!2sParoisse%20Sainte%20Monique%2C%20L%20289%2C%20Abidjan%2C%20C%C3%B4te%20d&#39;Ivoire!5e0!3m2!1sfr!2sci!4v1573979198368!5m2!1sfr!2sci" width="600" height="500" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 						</div>
 					{% endif %}
 				</div>
@@ -72,7 +75,6 @@
 				</div>
 
 				<div class="col-lg-3 col-md-3 col-sm-6 padbot30">
-					<!-- CONTACT FORM -->
 					<div class="contact_form">
 						<img src="{{ absolute_url(asset(vich_uploader_asset(bien.partenaire, 'imageFile'))) }}" alt="{{ bien.partenaire.nom }}" class="img-responsive">
 						<p>Contactez le partenaire</p>
@@ -80,35 +82,34 @@
 						<div id="note"></div>
 						<div id="fields">
 							<form action="#">
-								<input type="text" name="name" value="" placeholder="Nom *" />
-								<input type="text" name="email" value="" placeholder="E-mail *" />
-								<input type="text" name="phone" value="" placeholder="Telephone" />
-								<textarea name="message" placeholder="Message" ></textarea><br>
+								<input type="text" name="name" class="form-control" placeholder="Nom *" required />
+								<input type="email" name="email" class="form-control" placeholder="E-mail *" required /><br>
+								<input type="text" name="phone" class="form-control" placeholder="Telephone" />
+								<textarea class="form-control" name="message" placeholder="Message" required ></textarea>
 								<input class="btn active" type="submit" value="Envoyer" />
 							</form>
 						</div>
-					</div><!-- //CONTACT FORM -->
+					</div>
 				</div>
-			</div><!-- //ROW -->
-		</div><!-- //CONTAINER -->
+			</div>
+		</div>
 	</section>
 
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
-	<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5d129b1ca0d27e001207a599&product=inline-share-buttons"></script>
-	<script type="text/javascript" src="{{ asset('visitevirtuelle/visite1/lib/jquery.mousewheel.pack.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('visiteguidee/lib/jquery.mousewheel.pack.js') }}"></script>
 
-	<script type="text/javascript" src="{{ asset('visitevirtuelle/visite1/source/jquery.fancybox.pack.js') }}"></script>
-	<link rel="stylesheet" type="text/css" href="{{ asset('visitevirtuelle/visite1/source/jquery.fancybox.css')}}" media="screen" />
+	<script type="text/javascript" src="{{ asset('visiteguidee/source/jquery.fancybox.pack.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ asset('visiteguidee/source/jquery.fancybox.css')}}" media="screen" />
 
-	<link rel="stylesheet" type="text/css" href="{{ asset('visitevirtuelle/visite1/source/helpers/jquery.fancybox-buttons.css')}}" />
-	<script type="text/javascript" src="{{ asset('visitevirtuelle/visite1/source/helpers/jquery.fancybox-buttons.js')}}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ asset('visiteguidee/source/helpers/jquery.fancybox-buttons.css')}}" />
+	<script type="text/javascript" src="{{ asset('visiteguidee/source/helpers/jquery.fancybox-buttons.js')}}"></script>
 
-	<link rel="stylesheet" type="text/css" href="{{ asset('visitevirtuelle/visite1/source/helpers/jquery.fancybox-thumbs.css')}}" />
-	<script type="text/javascript" src="{{ asset('visitevirtuelle/visite1/source/helpers/jquery.fancybox-thumbs.js')}}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ asset('visiteguidee/source/helpers/jquery.fancybox-thumbs.css')}}" />
+	<script type="text/javascript" src="{{ asset('visiteguidee/source/helpers/jquery.fancybox-thumbs.js')}}"></script>
 
-	<script type="text/javascript" src="{{ asset('visitevirtuelle/visite1/source/helpers/jquery.fancybox-media.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('visiteguidee/source/helpers/jquery.fancybox-media.js')}}"></script>
 
 	<script type="text/javascript">
         $(document).ready(function() {
