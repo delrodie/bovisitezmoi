@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tour appversion="6.0.4" apprev="17320" start="node1">
+  <panorama id="node1">
+    <input prev1url="images/R0010011_20190803125343_o_preview_1.jpg" prev5url="images/R0010011_20190803125343_o_preview_5.jpg" tilesize="685" tile2url="images/R0010011_20190803125343_o_2.jpg" levelingroll="0" tile0url="images/R0010011_20190803125343_o_0.jpg" levelingpitch="0" prev0url="images/R0010011_20190803125343_o_preview_0.jpg" tile3url="images/R0010011_20190803125343_o_3.jpg" prev4url="images/R0010011_20190803125343_o_preview_4.jpg" tilescale="1.014599" prev2url="images/R0010011_20190803125343_o_preview_2.jpg" prev3url="images/R0010011_20190803125343_o_preview_3.jpg" tile5url="images/R0010011_20190803125343_o_5.jpg" tile1url="images/R0010011_20190803125343_o_1.jpg" tile4url="images/R0010011_20190803125343_o_4.jpg">
+      <preview color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="0">
+      <start pan="0" projection="4" tilt="0" fov="70"/>
+      <flyin pan="0" projection="9" tilt="-90" fov="170"/>
+      <min pan="0" fovpixel="2" tilt="-90"/>
+      <max pan="360" fovfisheye="360" scaletofit="1" tilt="90" fovstereographic="270" fov="120"/>
+    </view>
+    <userdata title="Premiere image" tags="images 360°" info="" datetime="03/08/2019 12:53" latitude="5.40671790" description="" author="" customnodeid="" comment="" longitude="-3.99517790" source="" copyright="">
+      <mapcoords y="-2.00696" x="1.51485" x_floorplan_percent="53.8612" mapid="FloorPlan01" y_floorplan_percent="79.1757"/>
+    </userdata>
+    <hotspots wordwrap="1" width="180" height="20">
+      <label wordwrap="1" width="180" borderradius="1" textalpha="1" enabled="1" border="1" background="1" textcolor="0x000000" borderalpha="1" backgroundalpha="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000"/>
+      <polystyle mode="0" handcursor="1" borderalpha="1" backgroundalpha="0.25098" backgroundcolor="0x0000ff" bordercolor="0x0000ff"/>
+      <hotspot id="Point01" pan="-169.62" title="$(ut)" description="" url="images/R0010010_20190803125236.JPG" tilt="0" skinid="ht_image" target="$fwd"/>
+    </hotspots>
+    <media/>
+    <transition zoomin="0" enabled="1" type="crossdissolve" zoomspeed="2" softedge="0" blendcolor="0x000000" blendtime="1" zoomfov="20" zoomout="0" zoomoutpause="1"/>
+    <animation syncanimationwithvideo="0" animsequence="Animation01" useinautorotation="0"/>
+    <control dblclickfullscreen="0" contextprojections="1" lockedkeyboard="0" lockedwheel="0" simulatemass="1" rubberband="0" invertwheel="0" sensitivity="19" lockedmouse="0" contextfullscreen="1" hideabout="0" speedwheel="1" lockedkeyboardzoom="0" invertcontrol="1">
+      <menulink url="http://alloimmo.ci/" text="&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; style=&quot;width:500px;height:600px;&quot;>"/>
+      <menulink url="http://alloimmo.ci/" text="&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; width=&quot;500&quot; height=&quot;600&quot;>&#xa;"/>
+    </control>
+  </panorama>
+  <panorama id="node2">
+    <input prev1url="images/R0010012_20190803130212_o_preview_1.jpg" prev5url="images/R0010012_20190803130212_o_preview_5.jpg" tilesize="685" tile2url="images/R0010012_20190803130212_o_2.jpg" levelingroll="0" tile0url="images/R0010012_20190803130212_o_0.jpg" levelingpitch="0" prev0url="images/R0010012_20190803130212_o_preview_0.jpg" tile3url="images/R0010012_20190803130212_o_3.jpg" prev4url="images/R0010012_20190803130212_o_preview_4.jpg" tilescale="1.014599" prev2url="images/R0010012_20190803130212_o_preview_2.jpg" prev3url="images/R0010012_20190803130212_o_preview_3.jpg" tile5url="images/R0010012_20190803130212_o_5.jpg" tile1url="images/R0010012_20190803130212_o_1.jpg" tile4url="images/R0010012_20190803130212_o_4.jpg">
+      <preview color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="0">
+      <start pan="0" projection="4" tilt="0" fov="70"/>
+      <flyin pan="0" projection="9" tilt="-90" fov="170"/>
+      <min pan="0" fovpixel="2" tilt="-90"/>
+      <max pan="360" fovfisheye="360" scaletofit="1" tilt="90" fovstereographic="270" fov="120"/>
+    </view>
+    <userdata title="2eme image" tags="images 360°" info="" datetime="03/08/2019 13:02" latitude="5.40616016" description="" author="" customnodeid="" comment="" longitude="-3.99507523" source="" copyright="">
+      <mapcoords y="-0.918255" x="0.538856" x_floorplan_percent="19.1593" mapid="FloorPlan01" y_floorplan_percent="36.2256"/>
+    </userdata>
+    <hotspots wordwrap="1" width="180" height="20">
+      <label wordwrap="1" width="180" borderradius="1" textalpha="1" enabled="1" border="1" background="1" textcolor="0x000000" borderalpha="1" backgroundalpha="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000"/>
+      <polystyle mode="0" handcursor="1" borderalpha="1" backgroundalpha="0.25098" backgroundcolor="0x0000ff" bordercolor="0x0000ff"/>
+      <hotspot id="Point01" pan="90" title="3e image" description="" url="{node3}" tilt="0" skinid="ht_node" target="$fwd"/>
+      <hotspot id="Point02" pan="-112.11" title="2eme image" description="" url="{node2}" tilt="-16.01" skinid="ht_node" target=""/>
+    </hotspots>
+    <media/>
+    <transition zoomin="0" enabled="1" type="crossdissolve" zoomspeed="2" softedge="0" blendcolor="0x000000" blendtime="1" zoomfov="20" zoomout="0" zoomoutpause="1"/>
+    <animation syncanimationwithvideo="0" animsequence="Animation01" useinautorotation="0"/>
+    <control dblclickfullscreen="0" contextprojections="1" lockedkeyboard="0" lockedwheel="0" simulatemass="1" rubberband="0" invertwheel="0" sensitivity="19" lockedmouse="0" contextfullscreen="1" hideabout="0" speedwheel="1" lockedkeyboardzoom="0" invertcontrol="1">
+      <menulink url="http://alloimmo.ci/" text="&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; style=&quot;width:500px;height:600px;&quot;>"/>
+      <menulink url="http://alloimmo.ci/" text="&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; width=&quot;500&quot; height=&quot;600&quot;>&#xa;"/>
+    </control>
+  </panorama>
+  <panorama id="node3">
+    <input prev1url="images/R0010013_20190803130409_o_preview_1.jpg" prev5url="images/R0010013_20190803130409_o_preview_5.jpg" tilesize="685" tile2url="images/R0010013_20190803130409_o_2.jpg" levelingroll="0" tile0url="images/R0010013_20190803130409_o_0.jpg" levelingpitch="0" prev0url="images/R0010013_20190803130409_o_preview_0.jpg" tile3url="images/R0010013_20190803130409_o_3.jpg" prev4url="images/R0010013_20190803130409_o_preview_4.jpg" tilescale="1.014599" prev2url="images/R0010013_20190803130409_o_preview_2.jpg" prev3url="images/R0010013_20190803130409_o_preview_3.jpg" tile5url="images/R0010013_20190803130409_o_5.jpg" tile1url="images/R0010013_20190803130409_o_1.jpg" tile4url="images/R0010013_20190803130409_o_4.jpg">
+      <preview color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="0">
+      <start pan="0" projection="4" tilt="0" fov="70"/>
+      <flyin pan="0" projection="9" tilt="-90" fov="170"/>
+      <min pan="0" fovpixel="2" tilt="-90"/>
+      <max pan="360" fovfisheye="360" scaletofit="1" tilt="90" fovstereographic="270" fov="120"/>
+    </view>
+    <userdata title="3e image" tags="images 360°" info="" datetime="03/08/2019 13:04" latitude="5.40616016" description="" author="" customnodeid="" comment="" longitude="-3.99524689" source="" copyright="">
+      <mapcoords y="-0.964993" x="1.94098" x_floorplan_percent="69.0127" mapid="FloorPlan01" y_floorplan_percent="38.0694"/>
+    </userdata>
+    <hotspots wordwrap="1" width="180" height="20">
+      <label wordwrap="1" width="180" borderradius="1" textalpha="1" enabled="1" border="1" background="1" textcolor="0x000000" borderalpha="1" backgroundalpha="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000"/>
+      <polystyle mode="0" handcursor="1" borderalpha="1" backgroundalpha="0.25098" backgroundcolor="0x0000ff" bordercolor="0x0000ff"/>
+      <hotspot id="Point01" pan="-95.48" title="" description="" url="{node4}" tilt="-11.74" skinid="ht_node" target="$fwd"/>
+    </hotspots>
+    <media/>
+    <transition zoomin="0" enabled="1" type="crossdissolve" zoomspeed="2" softedge="0" blendcolor="0x000000" blendtime="1" zoomfov="20" zoomout="0" zoomoutpause="1"/>
+    <animation syncanimationwithvideo="0" animsequence="Animation01" useinautorotation="0"/>
+    <control dblclickfullscreen="0" contextprojections="1" lockedkeyboard="0" lockedwheel="0" simulatemass="1" rubberband="0" invertwheel="0" sensitivity="19" lockedmouse="0" contextfullscreen="1" hideabout="0" speedwheel="1" lockedkeyboardzoom="0" invertcontrol="1">
+      <menulink url="http://alloimmo.ci/" text="&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; style=&quot;width:500px;height:600px;&quot;>"/>
+      <menulink url="http://alloimmo.ci/" text="&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; width=&quot;500&quot; height=&quot;600&quot;>&#xa;"/>
+    </control>
+  </panorama>
+  <panorama id="node4">
+    <input prev1url="images/R0010024_20190803132951_o_preview_1.jpg" prev5url="images/R0010024_20190803132951_o_preview_5.jpg" tilesize="685" tile2url="images/R0010024_20190803132951_o_2.jpg" levelingroll="0" tile0url="images/R0010024_20190803132951_o_0.jpg" levelingpitch="0" prev0url="images/R0010024_20190803132951_o_preview_0.jpg" tile3url="images/R0010024_20190803132951_o_3.jpg" prev4url="images/R0010024_20190803132951_o_preview_4.jpg" tilescale="1.014599" prev2url="images/R0010024_20190803132951_o_preview_2.jpg" prev3url="images/R0010024_20190803132951_o_preview_3.jpg" tile5url="images/R0010024_20190803132951_o_5.jpg" tile1url="images/R0010024_20190803132951_o_1.jpg" tile4url="images/R0010024_20190803132951_o_4.jpg">
+      <preview color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="0">
+      <start pan="0" projection="4" tilt="0" fov="70"/>
+      <flyin pan="0" projection="9" tilt="-90" fov="170"/>
+      <min pan="0" fovpixel="2" tilt="-90"/>
+      <max pan="360" fovfisheye="360" scaletofit="1" tilt="90" fovstereographic="270" fov="120"/>
+    </view>
+    <userdata title="4e image" tags="images 360°" info="" datetime="03/08/2019 13:29" latitude="5.40628833" description="" author="" customnodeid="" comment="" longitude="-3.99533272" source="" copyright="">
+      <mapcoords y="-1.22067" x="2.56782" x_floorplan_percent="91.3001" mapid="FloorPlan01" y_floorplan_percent="48.1562"/>
+    </userdata>
+    <hotspots wordwrap="1" width="180" height="20">
+      <label wordwrap="1" width="180" borderradius="1" textalpha="1" enabled="1" border="1" background="1" textcolor="0x000000" borderalpha="1" backgroundalpha="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000"/>
+      <polystyle mode="0" handcursor="1" borderalpha="1" backgroundalpha="0.25098" backgroundcolor="0x0000ff" bordercolor="0x0000ff"/>
+      <hotspot id="Point01" pan="-291.08" title="" description="" url="images/R0010019_20190803132014.JPG" tilt="0.06" skinid="ht_image" target=""/>
+      <hotspot id="Point02" pan="-146.309" title="3e image" description="" url="{node3}" tilt="0" skinid="ht_node" target="$fwd"/>
+    </hotspots>
+    <media/>
+    <transition zoomin="0" enabled="1" type="crossdissolve" zoomspeed="2" softedge="0" blendcolor="0x000000" blendtime="1" zoomfov="20" zoomout="0" zoomoutpause="1"/>
+    <animation syncanimationwithvideo="0" animsequence="Animation01" useinautorotation="0"/>
+    <control dblclickfullscreen="0" contextprojections="1" lockedkeyboard="0" lockedwheel="0" simulatemass="1" rubberband="0" invertwheel="0" sensitivity="19" lockedmouse="0" contextfullscreen="1" hideabout="0" speedwheel="1" lockedkeyboardzoom="0" invertcontrol="1">
+      <menulink url="http://alloimmo.ci/" text="&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; style=&quot;width:500px;height:600px;&quot;>"/>
+      <menulink url="http://alloimmo.ci/" text="&lt;img src=&quot;img_girl.jpg&quot; alt=&quot;Girl in a jacket&quot; width=&quot;500&quot; height=&quot;600&quot;>&#xa;"/>
+    </control>
+  </panorama>
+  <masternode>
+    <userdata title="" tags="" info="" datetime="" latitude="" description="" author="" customnodeid="" comment="" longitude="" source="" copyright=""/>
+  </masternode>
+  <map id="FloorPlan01" floorplannorth="0" title="" width="1023" type="file" bgcolor="rgba(255, 255, 255, 1)" transparent="0" zoomlevels="1" height="922" tileformat="jpg"/>
+  <map id="Map01" mapstyle="streets" title="" mapurltemplate="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" mapmaxzoom="18" type="web" mapprovider="openstreetmap"/>
+</tour>

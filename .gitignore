@@ -20,4 +20,4 @@
 /src/AppBundle/Entity/*~
 /.idea/
 !/web/visiteguidee
-/web/visiteguidee/*
+/web/visiteguidee/villa2
