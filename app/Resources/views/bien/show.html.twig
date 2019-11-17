@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-auto d-flex align-items-center">
                                     {% if bien.visiteLien %}
-                                        <a href="{{ bien.visiteLien}}" class="" target="_blank">
+                                        <a href="{{ path('frontend_bien_show', {'categorie': bien.categorie.slug, 'slug': bien.slug}) }}" class="" target="_blank">
                                             <i class="fa fa-street-view fa-2x"></i>
                                         </a>
                                     {% elseif bien.visiteDossier %}
@@ -132,8 +132,10 @@
                                             </div>
                                         </div>
                                         <div class="">
-                                            <div class="name">{{ autreBien.titre }}</div>
-                                            <div class="text-muted">{{ autreBien.categorie.libelle }}</div>
+                                            <a href="{{ path('backend_bien_show', {'slug': autreBien.slug}) }}">
+                                                <div class="name">{{ autreBien.titre }}</div>
+                                                <div class="text-muted">{{ autreBien.categorie.libelle }}</div>
+                                            </a>
                                         </div>
                                     </div>
                                 {% endfor %}

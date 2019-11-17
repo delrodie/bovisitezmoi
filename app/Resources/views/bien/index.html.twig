@@ -44,7 +44,6 @@
             <div class="row">
                 {% for bien in biens %}
                     <div class="col-lg-4">
-                        <!--widget card begin-->
                         <div class="card m-b-30">
                             <div class="card-media pos-relative">
                                 <img class="card-img" src="{{ vich_uploader_asset(bien, 'imageFile') }}" alt="Card image">
@@ -79,20 +78,17 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <!--<div class="col-md-12">
                                         <small class="text-muted">
                                             {{ bien.description|slice(0,150)|raw }}...
                                         </small>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
-                        <!--widget card ends-->
                     </div>
                 {% endfor %}
             </div>
-
-
         </div>
     </section>
 {% endblock %}
