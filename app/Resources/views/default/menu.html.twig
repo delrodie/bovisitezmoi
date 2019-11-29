@@ -19,14 +19,14 @@
 			</li>
 			<li class="col">
 				<ol>
-					{% for menu in menus|slice(5,4) %}
+					{% for menu in menus|slice(4,4) %}
 						<li><a href="{{ absolute_url(path('frontend_domaine_show', {'slug': menu.slug})) }}" >{{ menu.libelle}}</a></li>
 					{% endfor %}
 				</ol>
 			</li>
 			<li class="col">
 				<ol>
-					{% for menu in menus|slice(9,4) %}
+					{% for menu in menus|slice(8,4) %}
 						<li><a href="{{ absolute_url(path('frontend_domaine_show', {'slug': menu.slug})) }}" >{{ menu.libelle}}</a></li>
 					{% endfor %}
 				</ol>

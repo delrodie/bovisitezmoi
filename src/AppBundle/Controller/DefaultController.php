@@ -13,6 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        return $this->redirectToRoute("frontebd_maintenance");
         $em = $this->getDoctrine()->getManager();
         $sliders = $em->getRepository("AppBundle:Slider")->findList(); //dump($sliders);die();
         if (!$sliders) return $this->redirectToRoute("frontebd_maintenance");

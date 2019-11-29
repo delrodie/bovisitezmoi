@@ -104,7 +104,7 @@ class ModeController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('backend_mode_edit', array('id' => $mode->getId()));
+            return $this->redirectToRoute('backend_mode_index');
         }
 
         return $this->render('mode/edit.html.twig', array(

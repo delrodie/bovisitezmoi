@@ -18,6 +18,7 @@
 			<div class="row">
 				<div class="col-md-12 details">
 					<span class="badge badge-primary">{{ bien.categorie.libelle }}</span>
+					<span class="badge badge-secondary pull-right">{{ bien.mode.libelle }}</span>
 					<div class="bien-titre">{{ bien.titre}}</div>
 					<ul class="bien_meta pull-right">
 						{% if bien.visiteDossier %}
@@ -57,7 +58,7 @@
 							{{ bien.description|raw }}
 						</li>
 						<li>
-							<h3><b>Autres caractéristiques</b></h3>
+							<h3><b>Autres informations</b></h3>
 							{% if bien.adresse %}
 								<p><i class="fa fa-check-square-o"></i> {{ bien.adresse}}</p>
 							{% endif %}
