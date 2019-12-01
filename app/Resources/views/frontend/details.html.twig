@@ -60,16 +60,16 @@
 						<li>
 							<h3><b>Autres informations</b></h3>
 							{% if bien.adresse %}
-								<p><i class="fa fa-check-square-o"></i> {{ bien.adresse}}</p>
+								<p><i class="fa fa-map-pin"></i> {{ bien.adresse}}</p>
 							{% endif %}
 							{% if bien.website %}
-								<p><i class="fa fa-check-square-o"></i> {{ bien.website}}</p>
+								<p><i class="fa fa-globe"></i> {{ bien.website}}</p>
 							{% endif %}
 							{% if bien.telephone %}
-								<p><i class="fa fa-check-square-o"></i> {{ bien.telephone}}</p>
+								<p><i class="fa fa-phone"></i> {{ bien.telephone}}</p>
 							{% endif %}
 							{% if bien.affichagePrix %}
-								<p><i class="fa fa-check-square-o"></i> {{ bien.prix}}</p>
+								<p><i class="fa fa-money-bill"></i> {{ bien.prix}}</p>
 							{% endif %}
 						</li>
 					</ul>
@@ -119,7 +119,7 @@
 											<a class="open-project tovar_view" href="javascript:void(0);" data-toggle="modal" data-target="#produit{{ loop.index }}" >Voir</a>
 										</div>
 										<div class="tovar_description clearfix">
-											<a class="tovar_title" href="#" >{{ produit.marque}} {{ produit.reference }}</a>
+											<a class="tovar_title" href="{{ path('frontend_produit_show', {'slug': produit.slug}) }}" >{{ produit.marque}} {{ produit.reference }}</a>
 											<span class="tovar_price">{{ produit.prix|number_format(0,'','.') }} FCFA</span>
 										</div>
 									</div><!-- //TOVAR -->
@@ -145,7 +145,7 @@
 													<h3 class="cost"><span class="fa fa-money-bill"></span> {{ produit.prix|number_format(0,'','.')}} FCFA</h3>
 													<div class="space-ten"></div>
 													<div class="btn-ground">
-														<a href="#" class="btn btn-primary"><span class="fa fa-list-alt"></span> Voir le produit</a>
+														<a href="{{ path('frontend_produit_show', {'slug': produit.slug}) }}" class="btn btn-primary"><span class="fa fa-list-alt"></span> Voir le produit</a>
 													</div>
 												</div>
 											</div>

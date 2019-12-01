@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Produit;
 use AppBundle\Utilities\GestionBien;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -38,6 +39,21 @@ class FrBienController extends Controller
         }else{
             return $this->redirectToRoute('homepage');
         }
+    }
+
+    /**
+     * @Route("/{slug}", name="frontend_produit_show")
+     * @Method("GET")
+     */
+    public function produitAction(Produit $produit)
+    {
+        $em= $this->getDoctrine()->getManager();
+        $produits = $em->getRepository("AppBundle:Produit")->findBy(['bien'=>$produit->getBien()->getId()],['id'=>'DESC']);
+
+        return $this->render("frontend/produit.html.twig",[
+            'produit' => $produit,
+            'produits' => $produits,
+        ]);
     }
 
     /**

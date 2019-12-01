@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ produit.famille.libelle }}: {{ produit.marque }}, {{ produit.reference }}{% endblock %}
+{% block meta %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+{% endblock %}
+{% block body %}
+	<section class="breadcrumb parallax margbot30"></section>
+	<section class="banner_section">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 col-md-9 tovar_details_wrapper clearfix">
+					<div class="tovar_details_header clearfix margbot35">
+						<h3 class="pull-left"><b>{{produit.famille.libelle}}</b></h3>
+					</div>
+					<div class="clearfix padbot40">
+						<div class="tovar_view_fotos clearfix">
+							<div id="slider2" class="flexslider">
+								<ul class="slides">
+									<li><a href="javascript:void(0);" ><img src="{{ absolute_url(asset(vich_uploader_asset(produit, 'imageFile'))) }}" alt="" /></a></li>
+									{% for image in produit.images %}
+										<li><a href="javascript:void(0);" ><img src="{{ absolute_url(asset(vich_uploader_asset(image, 'imageFile'))) }}" alt="" /></a></li>
+									{% endfor %}
+								</ul>
+							</div>
+							<div id="carousel2" class="flexslider">
+								<ul class="slides">
+									<li><a href="javascript:void(0);" ><img src="{{ absolute_url(asset(vich_uploader_asset(produit, 'imageFile'))) }}" alt="" /></a></li>
+									{% for image in produit.images %}
+										<li><a href="javascript:void(0);" ><img src="{{ absolute_url(asset(vich_uploader_asset(image, 'imageFile'))) }}" alt="" /></a></li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+
+						<div class="tovar_view_description">
+							<div class="tovar_view_title">{{ produit.reference}}</div>
+							<div class="tovar_article"></div>
+							<div class="clearfix tovar_brend_price">
+								<div class="pull-left tovar_brend">{{ produit.marque}}</div>
+								<div class="pull-right tovar_view_price">{{ produit.prix|number_format(0,'','.')}} FCFA</div>
+							</div>
+							<div class="tovar_view_btn">
+								<a class="add_bag" href="javascript:void(0);"  data-toggle="modal" data-target="#commande"><i class="fa fa-shopping-cart"></i>Passer la commande</a>
+							</div>
+							<div class="modal fade" id="commande" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<a href="#" data-dismiss="modal" class="class pull-right"><span class="fa fa-close"></span></a>
+											<h3 class="modal-title">PASSEZ VOTRE COMMANDE</h3>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-md-6 product_img">
+													<img src="{{ absolute_url(asset(vich_uploader_asset(produit.bien.partenaire, 'imageFile'))) }}" class="img-responsive">
+												</div>
+												<div class="col-md-6 product_content">
+													<span class="h4"><strong>Categorie:</strong> {{ produit.famille.libelle }}</span> <br><br>
+													<span class="h4"><strong>Marque:</strong> {{ produit.marque }}</span> <br><br>
+													<span class="h4"><strong>Reference:</strong> {{ produit.reference }}</span> <br><br>
+													<span class="h4"><strong>Contact:</strong> {{ produit.bien.telephone }}</span> <br><br>
+													<span class="h4"><strong>Adresse:</strong> {{ produit.bien.adresse}}</span> <br><br>
+													<div class="space-ten"></div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tovar_information">
+						<ul class="tabs clearfix">
+							<li class="current">Informations</li>
+							<li>Description</li>
+						</ul>
+						<div class="box visible">
+							<strong>Marque</strong>: {{ produit.marque }} <br><br>
+							<strong>Référence</strong>: {{ produit.reference }} <br><br>
+							<strong>Mode</strong>: {{ produit.mode.libelle }} <br> <br>
+							<strong>Prix</strong>: {{ produit.prix|number_format(0,'.','') }} <br><br>
+						</div>
+						<div class="box">
+							{{ produit.description|raw }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br> <br>
+	{% if produits %}
+		<section class="new_arrivals padbot50">
+
+			<div class="container">
+				<h2>Les autres articles du vendeur</h2>
+
+				<div class="jcarousel-wrapper">
+
+					<div class="jCarousel_pagination">
+						<a href="javascript:void(0);" class="jcarousel-control-prev" ><i class="fa fa-angle-left"></i></a>
+						<a href="javascript:void(0);" class="jcarousel-control-next" ><i class="fa fa-angle-right"></i></a>
+					</div>
+
+					<div id="jcarousel_id" class="jcarousel">
+						<ul>
+							{% for produit in produits|slice(0,10) %}
+								<li>
+									<div class="tovar_item_new">
+										<div class="tovar_img">
+											<img src="{{ absolute_url(asset(vich_uploader_asset(produit, 'imageFile'))) }}" alt="" />
+											<a class="open-project tovar_view" href="javascript:void(0);" data-toggle="modal" data-target="#produit{{ loop.index }}" >Voir</a>
+										</div>
+										<div class="tovar_description clearfix">
+											<a class="tovar_title" href="{{ path('frontend_produit_show', {'slug': produit.slug}) }}" >{{ produit.marque}} {{ produit.reference }}</a>
+											<span class="tovar_price">{{ produit.prix|number_format(0,'','.') }} FCFA</span>
+										</div>
+									</div>
+								</li>
+							{% endfor %}
+						</ul>
+						{% for produit in produits|slice(0,10) %}
+							<div class="modal fade" id="produit{{loop.index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<a href="#" data-dismiss="modal" class="class pull-right"><span class="fa fa-close"></span></a>
+											<h3 class="modal-title">{{produit.marque}}</h3>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-md-6 product_img">
+													<img src="{{ absolute_url(asset(vich_uploader_asset(produit, 'imageFile'))) }}" class="img-responsive">
+												</div>
+												<div class="col-md-6 product_content">
+													<h4>Reference: <span> {{ produit.reference }}</span></h4>
+													{{ produit.description|raw}}
+													<h3 class="cost"><span class="fa fa-money-bill"></span> {{ produit.prix|number_format(0,'','.')}} FCFA</h3>
+													<div class="space-ten"></div>
+													<div class="btn-ground">
+														<a href="{{ path('frontend_produit_show', {'slug': produit.slug}) }}" class="btn btn-primary"><span class="fa fa-list-alt"></span> Voir le produit</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+{% endblock %}
