@@ -48,10 +48,12 @@ class FrBienController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $bien = $em->getRepository("AppBundle:Bien")->findOneBy(['slug'=>$slug]);
+        $produits = $em->getRepository("AppBundle:Produit")->findBy(['bien'=>$bien->getId()],['id'=>'DESC']);
         $gestionBien->addVue($slug); //dump($bien);die();
 
         return $this->render("frontend/details.html.twig",[
-            'bien' => $bien
+            'bien' => $bien,
+            'produits' => $produits,
         ]);
     }
 }
