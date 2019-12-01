@@ -86,6 +86,11 @@ class Produit
     private $famille;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ProduitImage", mappedBy="produit")
+     */
+    private $images;
+
+    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="produit_image", fileNameProperty="imageName", size="imageSize")
@@ -604,5 +609,46 @@ class Produit
     public function getModifieLe()
     {
         return $this->modifieLe;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add image
+     *
+     * @param \AppBundle\Entity\ProduitImage $image
+     *
+     * @return Produit
+     */
+    public function addImage(\AppBundle\Entity\ProduitImage $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \AppBundle\Entity\ProduitImage $image
+     */
+    public function removeImage(\AppBundle\Entity\ProduitImage $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Produitimages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Imagename</th>
+                <th>Imagesize</th>
+                <th>Updatedat</th>
+                <th>Publiepar</th>
+                <th>Modifiepar</th>
+                <th>Publiele</th>
+                <th>Modifiele</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produitImage in produitImages %}
+            <tr>
+                <td><a href="{{ path('backend_produitimage_show', { 'id': produitImage.id }) }}">{{ produitImage.id }}</a></td>
+                <td>{{ produitImage.imageName }}</td>
+                <td>{{ produitImage.imageSize }}</td>
+                <td>{% if produitImage.updatedAt %}{{ produitImage.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ produitImage.publiePar }}</td>
+                <td>{{ produitImage.modifiePar }}</td>
+                <td>{{ produitImage.publieLe }}</td>
+                <td>{{ produitImage.modifieLe }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('backend_produitimage_show', { 'id': produitImage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('backend_produitimage_edit', { 'id': produitImage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('backend_produitimage_new') }}">Create a new produitImage</a>
+        </li>
+    </ul>
+{% endblock %}

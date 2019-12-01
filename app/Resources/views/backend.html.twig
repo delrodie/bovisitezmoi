@@ -116,7 +116,7 @@
 				</li>
 			{% endif %}
 			{% if is_granted('ROLE_ADMIN') %}
-				<li class="menu-item active ">
+				<li class="menu-item ">
 					<a href="#" class="open-dropdown menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Produits
@@ -137,16 +137,6 @@
                             </span>
 								<span class="menu-icon">
                                 <i class="icon-placeholder fa fa-cubes"></i>
-                            </span>
-							</a>
-						</li>
-						<li class="menu-item ">
-							<a href='{{ absolute_url(path('homepage'))}}' class=' menu-link'>
-                            <span class="menu-label">
-                                <span class="menu-name">caroussel-article</span>
-                            </span>
-								<span class="menu-icon">
-                                <i class="icon-placeholder fa fa-picture-o"></i>
                             </span>
 							</a>
 						</li>

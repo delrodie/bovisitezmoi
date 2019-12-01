@@ -120,10 +120,30 @@
                         </div>
                     {% endif %}
                     <div class="text-right">
-                        <a href="{{ path('backend_produit_index') }}" class="btn btn-secondary">Voir les autres articles</a>
+                        <a href="{{ path('backend_produitimage_new',{'produitID': produit.id}) }}" class="btn btn-secondary">Ajouter images</a>
                         <a href="{{ path('backend_produit_new',{'bien':produit.bien.id}) }}" class="btn btn-primary">Ajouter un autre article</a>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                {% for image in produit.images %}
+                    <div class="col-lg-4">
+                        <!--widget card begin-->
+                        <div class="card m-b-30">
+                            <div class="card-media pos-relative">
+                                <img class="card-img" src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="Card image">
+                                <div class="card-img-overlay text-white">
+                                    <div class="card-controls">
+                                        <!--<a href="#" class="badge">
+											<i class="mdi mdi-eye-outline mdi-24px"></i> 124
+										</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--widget card ends-->
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

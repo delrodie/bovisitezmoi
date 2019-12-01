@@ -1,0 +1,123 @@
+{% extends 'backend.html.twig' %}
+{% block title %}{{ parent() }} Gestion des images{% endblock %}
+{% block body %}
+    <section class="admin-content">
+        <div class="bg-dark">
+            <div class="container  m-b-30">
+                <div class="row">
+                    <div class="col-12 text-white p-t-40 p-b-90">
+                        <h4 class="">  Gestion des images</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container  pull-up">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!--widget card begin-->
+                            <div class="card m-b-30">
+                                <div class="card-media pos-relative">
+                                    <img class="card-img" src="{{ vich_uploader_asset(produit, 'imageFile') }}" alt="Card image">
+                                    <div class="card-img-overlay text-white">
+                                        <div class="card-controls">
+                                            <!--<a href="#" class="badge">
+												<i class="mdi mdi-eye-outline mdi-24px"></i> 124
+											</a>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="fw-400 m-b-0">
+                                        <a href="#">{{ produit.marque }} {{ produit.reference }}</a>
+                                    </h5>
+
+                                </div>
+                                <div class="card-footer ">
+                                    <div class="row">
+                                        <div class="col-md-12 text-md-left text-muted">
+                                            <span class="badge badge-dark">{{ produit.reference }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--widget card ends-->
+                        </div>
+                        {% for image in produitImages %}
+                            <div class="col-lg-6">
+                                <!--widget card begin-->
+                                <div class="card m-b-30">
+                                    <div class="card-media pos-relative">
+                                        <img class="card-img" src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="Card image">
+                                        <div class="card-img-overlay text-white">
+                                            <div class="card-controls">
+                                                <!--<a href="#" class="badge">
+													<i class="mdi mdi-eye-outline mdi-24px"></i> 124
+												</a>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="fw-400 m-b-0">
+                                            <a href="{{ path('backend_produitimage_edit', {'id': image.id}) }}">{{ image.produit.reference }}</a>
+                                        </h5>
+
+                                    </div>
+                                    <div class="card-footer ">
+                                        <div class="row">
+                                            <div class="col-md-12 text-md-left text-muted">
+                                                <span class="badge badge-dark">{{ image.produit.reference }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--widget card ends-->
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="card m-b-30">
+                        <div class="card-header">
+                            <h5 class="m-b-0">Modification</h5>
+                        </div>
+                        <div class="card-body ">
+                            {{ form_start(edit_form)}}
+                            <div class="form-row">
+                                <div class="col-12 form-group">
+                                    {{ form_widget(edit_form.produit)}}
+                                    {{ form_errors(edit_form.produit) }}
+                                </div>
+                                <div class="col-12 form-group">
+                                    <label for="">(Dimension image 1600x700 px)</label>
+                                    {{ form_widget(edit_form.imageFile)}}
+                                    {{ form_errors(edit_form.imageFile) }}
+                                </div>
+                            </div>
+                            <div class="form-group text-right">
+                                <a href="{{ path('backend_produitimage_new', {'produitID': produit.id}) }}" class="btn btn-default">Annuler</a>
+                                <button class="btn btn-primary">Modifier</button>
+                            </div>
+                            {{ form_end(edit_form) }}
+                            <div class="form-group text-left">
+                                {{ form_start(delete_form, {'attr': {'onsubmit': 'return confirm("Êtes-vous sur de vouloir supprimer cette image ?");'}}) }}
+                                <button class="btn btn-danger"><i class="fa fa-trash"></i> Suprimer</button>
+                                {{ form_end(delete_form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src='{{ absolute_url(asset('ressources/assets/bundles/ba78fede76f682cd388ed2abbfd1e1568e76f8a4.js')) }}'></script>
+{% endblock %}

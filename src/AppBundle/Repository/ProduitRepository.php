@@ -10,4 +10,8 @@ namespace AppBundle\Repository;
  */
 class ProduitRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findProduit($produit)
+    {
+        return $this->createQueryBuilder('p')->where('p.id = :produit')->setParameter('produit', $produit);
+    }
 }
