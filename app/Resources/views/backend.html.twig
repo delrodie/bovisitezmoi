@@ -116,6 +116,55 @@
 				</li>
 			{% endif %}
 			{% if is_granted('ROLE_ADMIN') %}
+				<li class="menu-item active ">
+					<a href="#" class="open-dropdown menu-link">
+                    <span class="menu-label">
+                        <span class="menu-name">Produits
+                            <span class="menu-arrow"></span>
+                        </span>
+                    </span>
+						<span class="menu-icon">
+                        <i class="icon-placeholder fa fa-cube "></i>
+                    </span>
+					</a>
+					<!--submenu-->
+					<ul class="sub-menu">
+
+						<li class="menu-item ">
+							<a href='{{ absolute_url(path('homepage'))}}' class=' menu-link'>
+                            <span class="menu-label">
+                                <span class="menu-name">Articles</span>
+                            </span>
+								<span class="menu-icon">
+                                <i class="icon-placeholder fa fa-cubes"></i>
+                            </span>
+							</a>
+						</li>
+						<li class="menu-item ">
+							<a href='{{ absolute_url(path('homepage'))}}' class=' menu-link'>
+                            <span class="menu-label">
+                                <span class="menu-name">caroussel-article</span>
+                            </span>
+								<span class="menu-icon">
+                                <i class="icon-placeholder fa fa-picture-o"></i>
+                            </span>
+							</a>
+						</li>
+						<li class="menu-item ">
+							<a href='{{ absolute_url(path('backend_famille_index'))}}' class=' menu-link'>
+                            <span class="menu-label">
+                                <span class="menu-name">Famille</span>
+                            </span>
+								<span class="menu-icon">
+                                <i class="icon-placeholder fa fa-list"></i>
+                            </span>
+							</a>
+						</li>
+
+					</ul>
+				</li>
+			{% endif %}
+			{% if is_granted('ROLE_ADMIN') %}
 				<li class="menu-item ">
 					<a href="#" class="open-dropdown menu-link">
                     <span class="menu-label">
