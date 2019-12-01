@@ -10,4 +10,8 @@ namespace AppBundle\Repository;
  */
 class FamilleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function liste()
+    {
+        return $this->createQueryBuilder('f')->orderBy('f.libelle',"ASC");
+    }
 }

@@ -37,6 +37,11 @@ class Famille
     private $nombreProduit;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Produit", mappedBy="famille")
+     */
+    private $produits;
+
+    /**
      * @var string
      *
      * @Gedmo\Slug(fields={"libelle"})

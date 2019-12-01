@@ -82,4 +82,38 @@ class GestionBien
         }
         return false;
     }
+
+    /**
+     * @param $slug
+     * @return bool
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function addProduit($slug)
+    {
+        $bien = $this->em->getRepository("AppBundle:Bien")->findOneBy(['slug'=>$slug]);
+        if ($bien)
+        {
+            $bien->setNombreProduit($bien->getNombreProduit()+1);
+            $this->em->flush();
+
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     *
+     */
+    public function addFamille($slug)
+    {
+        $famille = $this->em->getRepository("AppBundle:Famille")->findOneBy(['slug'=>$slug]);
+        if ($famille)
+        {
+            $famille->setNombreProduit($famille->getNombreProduit()+1);
+            $this->em->flush();
+
+            return true;
+        }
+        return false;
+    }
 }

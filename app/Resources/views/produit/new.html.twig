@@ -1,0 +1,100 @@
+{% extends 'backend.html.twig' %}
+{% block title %}{{ parent() }} Gestion des produits{% endblock %}
+{% block body %}
+    <section class="admin-content">
+        <div class="bg-dark">
+            <div class="container  m-b-30">
+                <div class="row">
+                    <div class="col-12 text-white p-t-40 p-b-90">
+                        <h4 class="">  Gestion des produits</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container  pull-up">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="card m-b-30">
+                        <div class="card-header">
+                            <h5 class="m-b-0">Enregistrement</h5>
+                        </div>
+                        <div class="card-body ">
+                            {{ form_start(form)}}
+                            <div class="form-row">
+                                <div class="col-6 form-group">
+                                    <label for="">Le bien</label>
+                                    {{ form_widget(form.bien)}}
+                                    {{ form_errors(form.bien) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">La famille</label>
+                                    {{ form_widget(form.famille)}}
+                                    {{ form_errors(form.famille) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">la marque</label>
+                                    {{ form_widget(form.marque)}}
+                                    {{ form_errors(form.marque) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">La référence</label>
+                                    {{ form_widget(form.reference)}}
+                                    {{ form_errors(form.reference) }}
+                                </div>
+                                <div class="col-12 form-group">
+                                    <label for="">Description</label>
+                                    {{ form_widget(form.description)}}
+                                    {{ form_errors(form.description) }}
+                                </div>
+                                <div class="col-12 form-group">
+                                    <label for="">Mots clés</label>
+                                    {{ form_widget(form.tags)}}
+                                    {{ form_errors(form.tags) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Prix</label>
+                                    {{ form_widget(form.prix)}}
+                                    {{ form_errors(form.prix) }}
+                                </div>
+                                <div class="col-6 form-group">
+                                    <label for="">Mode</label>
+                                    {{ form_widget(form.mode)}}
+                                    {{ form_errors(form.mode) }}
+                                </div>
+                                <div class="col-12 form-group">
+                                    {{ form_widget(form.imageFile)}}
+                                    {{ form_errors(form.imageFile) }}
+                                </div>
+                            </div>
+                            <div class="form-group text-right">
+                                <a href="{{ path('backend_produit_index') }}" class="btn btn-default">Annuler</a>
+                                <button class="btn btn-primary">Enregistrer</button>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('ressources/vendor/tagsinput/js/bootstrap-tagsinput.css') }}">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src='{{ absolute_url(asset('ressources/assets/bundles/ba78fede76f682cd388ed2abbfd1e1568e76f8a4.js')) }}'></script>
+    <script src="{{ asset('ressources/vendor/tagsinput/js/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("tag-input").tagsinput();
+            $('#appbundle_produit_description').summernote();
+        })
+    </script>
+{% endblock %}

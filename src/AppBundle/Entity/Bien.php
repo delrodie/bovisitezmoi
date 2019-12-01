@@ -122,6 +122,13 @@ class Bien
      * @ORM\Column(name="google_map", type="string", length=255, nullable=true)
      */
     private $googleMap;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nombre_produit", type="integer", nullable=true)
+     */
+    private $nombreProduit;
     
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mode")
@@ -140,6 +147,11 @@ class Bien
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Produit", mappedBy="bien")
+     */
+    private $produits;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -852,5 +864,70 @@ class Bien
     public function getGoogleMap()
     {
         return $this->googleMap;
+    }
+
+    /**
+     * Set nombreProduit
+     *
+     * @param integer $nombreProduit
+     *
+     * @return Bien
+     */
+    public function setNombreProduit($nombreProduit)
+    {
+        $this->nombreProduit = $nombreProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreProduit
+     *
+     * @return integer
+     */
+    public function getNombreProduit()
+    {
+        return $this->nombreProduit;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add produit
+     *
+     * @param \AppBundle\Entity\Produit $produit
+     *
+     * @return Bien
+     */
+    public function addProduit(\AppBundle\Entity\Produit $produit)
+    {
+        $this->produits[] = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \AppBundle\Entity\Produit $produit
+     */
+    public function removeProduit(\AppBundle\Entity\Produit $produit)
+    {
+        $this->produits->removeElement($produit);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduits()
+    {
+        return $this->produits;
     }
 }

@@ -47,4 +47,12 @@ class BienRepository extends \Doctrine\ORM\EntityRepository
                     ->getQuery()->getResult()
             ;
     }
+
+    public function findBien($bien)
+    {
+        return $this->createQueryBuilder('b')
+                    ->where('b.id = :bien')
+                    ->setParameter('bien', $bien)
+            ;
+    }
 }

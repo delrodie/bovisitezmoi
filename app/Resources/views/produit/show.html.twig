@@ -1,0 +1,130 @@
+{% extends 'backend.html.twig' %}
+{% block title %}{{ parent() }} Gestion des produits{% endblock %}
+{% block body %}
+    <section class="admin-content">
+        <div class="bg-dark m-b-30">
+            <div class="container">
+                <div class="row p-b-60 p-t-60">
+
+                    <div class="col-md-6 text-white p-b-30">
+                        <div class="media">
+                            <div class="avatar mr-3  avatar-xl">
+                                <img src="{{ vich_uploader_asset(produit.bien.partenaire, 'imageFile') }}" alt="..." class="avatar-img rounded-circle">
+                            </div>
+                            <div class="media-body m-auto">
+                                <h5 class="mt-0">{{ produit.bien.partenaire.nom}} </h5>
+                                <div class="opacity-75">{{ produit.bien.partenaire.adresse }} | {{ produit.bien.partenaire.email}} | {{ produit.bien.partenaire.contact}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 text-white my-auto text-md-right p-b-30">
+
+                        <div class="">
+                            <p class="opacity-75"><a href="#!">{{ produit.bien.partenaire.nombreBien}} biens</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pull-up">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Single post-->
+                    <div class="card m-b-30">
+                        <div class="card-header">
+                            <div class="media">
+                                <div class="media-body m-auto">
+                                    <h5 class="m-0"><span class="badge badge-primary">{{ produit.marque }}</span> {{ produit.reference }} </h5>
+                                    <div class="opacity-75 text-muted">{{ produit.publiePar|title}} | {{ produit.publieLe|date('d-m-Y') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-raw">
+
+
+                        </div>
+                        <div class="card-body">
+                            <div class="p-b-10 text-center">
+                                <img class="rounded" src="{{ vich_uploader_asset(produit, 'imageFile') }}" alt="">
+                            </div>
+
+                            <div class="row mt-5 mb-5">
+                                <div class="col">
+                                    <div class="opacity-75">
+                                        <a href="{{ path('backend_produit_index') }}" class="m-r-5">
+                                            <i class="fa fa-reply fa-lg"></i>
+                                        </a>
+                                        <a href="{{ path('backend_produit_edit', {'slug': produit.slug}) }}" class="m-r-5">
+                                            <i class="fa fa-edit fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-justify">
+                                {{ produit.description|raw}}
+                            </p>
+
+                            <p class="mb-4">
+                                {% for tag in produit.tags|split(',') %}
+                                    <a href="#!" class="badge badge-soft-primary">{{ tag }}</a>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="card m-b-30">
+                        <div class="card-header">
+                            Autres informations
+                        </div>
+                        <div class="list-group list  list-group-flush">
+                            {% if produit.mode %}
+                                <div class="list-group-item ">
+                                    <i class="fa fa-globe"></i> <a href="#" class="text-underline"> {{  produit.mode.libelle }}</a>
+                                </div>
+                            {% endif %}
+                            {% if produit.prix %}
+                                <div class="list-group-item ">
+                                    <i class="fa fa-money-bill"></i>  <a href="#" class="text-underline"> {{ produit.prix|number_format(0,'','.')}}</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if produit.bien.produits %}
+                        <div class="card m-b-30">
+                            <div class="card-header">
+                                Autres produits de ce bien
+                            </div>
+                            <div class="list-group list  list-group-flush">
+                                {% for autreproduit in produit.bien.produits|slice(0,5) %}
+                                    <div class="list-group-item d-flex  align-items-center">
+                                        <div class="m-r-20">
+                                            <div class="avatar avatar-sm ">
+                                                <img class="avatar-img rounded-circle" src="{{ vich_uploader_asset(autreproduit, 'imageFile') }}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <a href="{{ path('backend_produit_show', {'slug': autreproduit.slug}) }}">
+                                                <div class="name">{{ autreproduit.reference }}</div>
+                                                <div class="text-muted">{{ autreproduit.marque }}</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    {% endif %}
+                    <div class="text-right">
+                        <a href="{{ path('backend_produit_index') }}" class="btn btn-secondary">Voir les autres articles</a>
+                        <a href="{{ path('backend_produit_new',{'bien':produit.bien.id}) }}" class="btn btn-primary">Ajouter un autre article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
