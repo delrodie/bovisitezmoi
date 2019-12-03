@@ -16,6 +16,7 @@ class FamilleType extends AbstractType
     {
         $builder
             ->add('libelle', TextType::class,['attr'=>['class'=>"form-control",'placeholder'=>"Le nom de la famille",'autocomplete'=>"off"]])
+            ->add('code', TextType::class,['attr'=>['class'=>"form-control",'placeholder'=>"Le code de la famille",'autocomplete'=>"off"]])
             //->add('nombreProduit')
             //->add('slug')->add('publiePar')->add('modifiePar')->add('publieLe')->add('modifieLe')
         ;

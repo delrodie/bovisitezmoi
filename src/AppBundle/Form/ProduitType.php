@@ -22,7 +22,7 @@ class ProduitType extends AbstractType
         $bien = $this->bien;
 
         $builder
-            ->add('reference', TextType::class,['attr'=>['class'=>"form-control", 'placeholder'=>"La reference du produit", 'autocomplete'=>"off"]])
+            //->add('reference', TextType::class,['attr'=>['class'=>"form-control", 'placeholder'=>"La reference du produit", 'autocomplete'=>"off"]])
             ->add('description')
             ->add('tags', TextType::class,['attr'=>['class'=>'form-control tag-input', 'placeholder'=>"Les mots clés", 'autocomplete'=>"off",'data-role' => "tagsinput",], 'required'=>true])
             ->add('marque', TextType::class,['attr'=>['class'=>"form-control", 'placeholder'=>"La marque du produit", 'autocomplete'=>"off"]])

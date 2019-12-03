@@ -48,6 +48,13 @@ class ProduitController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $reference = $gestionBien->referenceProduit($produit->getFamille()->getSlug());
+            if (!$reference){
+                return $this->redirectToRoute('backend_produit_new',['bien'=>$produit->getBien()->getId()]);
+            }else{
+                $produit->setReference($reference);
+            }
+
             $em->persist($produit);
             $em->flush();
 

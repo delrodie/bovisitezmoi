@@ -102,7 +102,9 @@ class GestionBien
     }
 
     /**
-     *
+     * @param $slug
+     * @return bool
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function addFamille($slug)
     {
@@ -115,5 +117,25 @@ class GestionBien
             return true;
         }
         return false;
+    }
+
+    public function referenceProduit($slug)
+    {
+        $famille = $this->em->getRepository("AppBundle:Famille")->findOneBy(['slug'=>$slug]);
+        if ($famille){
+            if (!$famille->getNombreProduit()) {
+                $nombre = 1;
+            }else{
+                $nombre = $famille->getNombreProduit()+1;
+            }
+            if ($nombre < 10){$ref = '000'.$nombre;}
+            elseif ($nombre <100){$ref = '00'.$nombre;}
+            elseif ($nombre < 1000){$ref = '0'.$nombre;}
+            else{ $ref = $nombre; }
+            $reference = $famille->getCode().''.$ref;
+            return $reference;
+        }else{
+            return false;
+        }
     }
 }

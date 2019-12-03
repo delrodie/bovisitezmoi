@@ -25,6 +25,13 @@ class Famille
     /**
      * @var string
      *
+     * @ORM\Column(name="code", type="string", length=255)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="libelle", type="string", length=255)
      */
     private $libelle;
@@ -258,5 +265,70 @@ class Famille
     public function getModifieLe()
     {
         return $this->modifieLe;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Famille
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Add produit
+     *
+     * @param \AppBundle\Entity\Produit $produit
+     *
+     * @return Famille
+     */
+    public function addProduit(\AppBundle\Entity\Produit $produit)
+    {
+        $this->produits[] = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \AppBundle\Entity\Produit $produit
+     */
+    public function removeProduit(\AppBundle\Entity\Produit $produit)
+    {
+        $this->produits->removeElement($produit);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduits()
+    {
+        return $this->produits;
     }
 }

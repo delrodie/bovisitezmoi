@@ -61,6 +61,10 @@
                                     {{ form_widget(edit_form.libelle)}}
                                     {{ form_errors(edit_form.libelle) }}
                                 </div>
+                                <div class="col-12 form-group">
+                                    {{ form_widget(edit_form.code)}}
+                                    {{ form_errors(edit_form.code) }}
+                                </div>
                             </div>
                             <div class="form-group text-right">
                                 <a href="{{ path('backend_famille_index') }}" class="btn btn-default">Annuler</a>

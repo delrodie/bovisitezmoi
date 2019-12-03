@@ -25,6 +25,7 @@
                                     <thead>
                                     <tr>
                                         <td>ID</td>
+                                        <td>CODE</td>
                                         <td>Nom</td>
                                         <td>Produits</td>
                                         <td>Actions</td>
@@ -34,6 +35,7 @@
                                     {% for famille in familles %}
                                         <tr>
                                             <td>{{ loop.index }}
+                                            <td>{{ famille.code }}</td>
                                             <td>{{ famille.libelle }}</td>
                                             <td class="text-center">
                                                 {% if famille.nombreProduit is null %}
@@ -68,6 +70,10 @@
                                 <div class="col-12 form-group">
                                     {{ form_widget(form.libelle)}}
                                     {{ form_errors(form.libelle) }}
+                                </div>
+                                <div class="col-12 form-group">
+                                    {{ form_widget(form.code)}}
+                                    {{ form_errors(form.code) }}
                                 </div>
                             </div>
                             <div class="form-group text-right">

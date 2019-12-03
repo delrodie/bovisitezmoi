@@ -58,6 +58,9 @@
                                         <a href="{{ path('backend_bien_edit', {'slug': bien.slug}) }}" class="m-r-5">
                                             <i class="fa fa-edit fa-lg"></i>
                                         </a>
+                                        <a href="{{ path('frontend_bien_show', {'categorie': bien.categorie.slug, 'slug': bien.slug}) }}" class="m-r-5" target="_blank">
+                                            <i class="fa fa-eye fa-lg"></i>
+                                        </a>
                                         {% if bien.mode.libelle == "Promotion" %}
                                             <a href="#"><span class="badge badge-primary">Promotion</span>{{ bien.debutPromo|date('d-m-Y') }} / {{ bien.finPromo|date('d-m-Y') }}</a>
                                         {% endif %}

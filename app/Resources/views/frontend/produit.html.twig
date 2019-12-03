@@ -40,7 +40,10 @@
 							<div class="tovar_article"></div>
 							<div class="clearfix tovar_brend_price">
 								<div class="pull-left tovar_brend">{{ produit.marque}}</div>
-								<div class="pull-right tovar_view_price">{{ produit.prix|number_format(0,'','.')}} FCFA</div>
+								{% if produit.prix %}
+									<div class="pull-right tovar_view_price">{{ produit.prix|number_format(0,'','.')}} FCFA</div>
+								{% endif %}
+
 							</div>
 							<div class="tovar_view_btn">
 								<a class="add_bag" href="javascript:void(0);"  data-toggle="modal" data-target="#commande"><i class="fa fa-shopping-cart"></i>Passer la commande</a>
@@ -61,8 +64,12 @@
 													<span class="h4"><strong>Categorie:</strong> {{ produit.famille.libelle }}</span> <br><br>
 													<span class="h4"><strong>Marque:</strong> {{ produit.marque }}</span> <br><br>
 													<span class="h4"><strong>Reference:</strong> {{ produit.reference }}</span> <br><br>
-													<span class="h4"><strong>Contact:</strong> {{ produit.bien.telephone }}</span> <br><br>
-													<span class="h4"><strong>Adresse:</strong> {{ produit.bien.adresse}}</span> <br><br>
+													{% if (produit.bien.telephone) %}
+														<span class="h4"><strong>Contact:</strong> {{ produit.bien.telephone }}</span> <br><br>
+													{% endif %}
+													{% if (produit.bien.adresse) %}
+														<span class="h4"><strong>Adresse:</strong> {{ produit.bien.adresse}}</span> <br><br>
+													{% endif %}
 													<div class="space-ten"></div>
 
 												</div>
@@ -118,7 +125,10 @@
 										</div>
 										<div class="tovar_description clearfix">
 											<a class="tovar_title" href="{{ path('frontend_produit_show', {'slug': produit.slug}) }}" >{{ produit.marque}} {{ produit.reference }}</a>
-											<span class="tovar_price">{{ produit.prix|number_format(0,'','.') }} FCFA</span>
+											{% if (produit.prix) %}
+												<span class="tovar_price">{{ produit.prix|number_format(0,'','.') }} FCFA</span>
+											{% endif %}
+
 										</div>
 									</div>
 								</li>
@@ -140,7 +150,9 @@
 												<div class="col-md-6 product_content">
 													<h4>Reference: <span> {{ produit.reference }}</span></h4>
 													{{ produit.description|raw}}
-													<h3 class="cost"><span class="fa fa-money-bill"></span> {{ produit.prix|number_format(0,'','.')}} FCFA</h3>
+													{% if produit.prix %}
+														<h3 class="cost"><span class="fa fa-money-bill"></span> {{ produit.prix|number_format(0,'','.')}} FCFA</h3>
+													{% endif %}
 													<div class="space-ten"></div>
 													<div class="btn-ground">
 														<a href="{{ path('frontend_produit_show', {'slug': produit.slug}) }}" class="btn btn-primary"><span class="fa fa-list-alt"></span> Voir le produit</a>
