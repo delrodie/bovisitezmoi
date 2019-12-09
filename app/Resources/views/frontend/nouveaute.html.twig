@@ -7,34 +7,6 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 {% endblock %}
-{% block slider %}
-	<style type="text/css">
-		{% for slider in sliders %}
-		.flexslider.top_slider .slide{{loop.index}} {
-			width:100%;
-			background-color:#085e11;
-			background-image:url({{ asset(vich_uploader_asset(slider, 'imageFile') ) }});
-			background-size:cover;
-		}
-		{% endfor %}
-		.wrapper404 {
-			float:right;
-			width:770px;
-			padding-right:30px;
-			padding-left:30px;
-			text-align:center;
-			color:#42115E;
-		}
-		.wrapper404 h1 {
-			margin:0;
-			padding-top:10px;
-			font-weight:900;
-			line-height:136px;
-			font-size:130px;
-			color:#42115E;
-		}
-	</style>
-{% endblock %}
 {% block mode %}
 	<style type="text/css">
 		{% for bien in biens|slice(0,15) %}
@@ -49,40 +21,11 @@
 	</style>
 {% endblock %}
 {% block body %}
-	{% if sliders %}
-		<section id="home" class="padbot0 margbot40">
-			<div class="flexslider top_slider">
-				<ul class="slides2">
-					{% for slider in sliders %}
-						<li class="slide{{loop.index}}">
-
-							<!-- CONTAINER -->
-							<div class="container">
-								<div class="sale_caption1">
-									<p class="title2 FromTop">
-										{{ slider.titre }}
-									</p>
-								</div>
-							</div><!-- //CONTAINER -->
-						</li>
-					{% endfor %}
-
-				</ul>
-			</div>
-		</section>
-	{% else %}
-		<section class="breadcrumb parallax margbot30"></section>
-	{% endif %}
+	<section class="breadcrumb parallax margbot30"></section>
 
 	<section class="banner_section">
 
 		<div class="container">
-			<div class="row mb-5" style="margin-bottom: 30px;">
-				<div class="col-md-12 pull-right">
-					<i class="fa fa-home fa-lg"></i> >
-					<a href="#">{{ domaine.libelle }}</a>
-				</div>
-			</div>
 			<div class="row">
 				<div id="sidebar" class="col-lg-3 col-md-3 col-sm-3 padbot50">
 					<div class="sidepanel widget_categories">
@@ -96,13 +39,13 @@
 				</div>
 				<div class="col-lg-9 col-sm-9 col-sm-9 padbot20">
 					<div class="row">
-						<!--<div class="col-md-6">
+						<div class="col-md-6">
 							<div class="widget_search">
 								<form class="search_form" action="javascript:void(0);" method="get" name="search_form">
 									<input type="text" name="Recherche..." value="Recherche..." class="form-control" onFocus="if (this.value == 'Search...') this.value = '';" onBlur="if (this.value == '') this.value = 'Search...';" />
 								</form>
 							</div>
-						</div>-->
+						</div>
 						<div class="col-md-6">
 							<div class="">
 								<div class="widget_search">
@@ -110,7 +53,7 @@
 										<select name="categorie" id="categorie" class="form-control" onchange="this.form.submit()">
 											<option value="" class="text-center"> --- Selectionnez la sous catégorie concernée ---</option>
 											<option value=""></option>
-											{% for categorie in domaine.categories if categorie.nombreBien %}
+											{% for categorie in categories if categorie.nombreBien %}
 												<option value="{{ categorie.slug }}">{{ categorie.libelle }}</option>
 											{% endfor %}
 										</select>

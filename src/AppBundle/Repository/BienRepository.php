@@ -55,4 +55,55 @@ class BienRepository extends \Doctrine\ORM\EntityRepository
                     ->setParameter('bien', $bien)
             ;
     }
+
+    /**
+     * Nombre des enregistrés des quinze derniers jours
+     *
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getNouveaute($liste = null)
+    {
+        $quinzeJour = time() - (360*60*60);
+        if (!$liste){
+            return $this->createQueryBuilder('b')
+                        ->select('count(b.id)')
+                        ->where('b.publieLe >= :delai')
+                        ->setParameter('delai', $quinzeJour)
+                        ->getQuery()->getSingleScalarResult()
+                ;
+        } else{
+            return $this->createQueryBuilder('b')
+                        ->where('b.publieLe >= :delai')
+                        ->setParameter('delai', $quinzeJour)
+                        ->getQuery()->getResult()
+                ;
+        }
+    }
+
+    /**
+     * Nombre des biens les plus visités
+     *
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getPlusVisite($liste = null)
+    {
+        if (!$liste){
+            return $this->createQueryBuilder('b')
+                ->select('count(b.id)')
+                ->where('b.nombreVue >= 50')
+                ->getQuery()->getSingleScalarResult()
+                ;
+        }else{
+            return $this->createQueryBuilder('b')
+                ->where('b.nombreVue >= 50')
+                ->orderBy('b.nombreVue', 'DESC')
+                ->getQuery()->getResult()
+                ;
+        }
+    }
+
 }

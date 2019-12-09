@@ -44,24 +44,24 @@
 					<div class="row">
 						<div class="top_sale_banners center">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ss-12 overlay-image">
-								<a class="banner nobord margbot30" href="javascript:void(0);" >
+								<a class="banner nobord margbot30" href="{{ path('statistiques_nouveaute') }}" >
 									<img src="{{ asset('img/bg/fond1.jpg') }}" alt="" class="" />
 									<div class="normal">
 										<div class="text">Nouveautés</div>
 									</div>
 									<div class="hover">
-										<div class="text valeur">25</div>
+										<div class="text valeur">{{ nouveaute }}</div>
 									</div>
 								</a>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ss-12 overlay-image">
-								<a class="banner nobord margbot30" href="javascript:void(0);" >
+								<a class="banner nobord margbot30" href="{{ path('statistiques_visite') }}" >
 									<img src="{{ asset('img/bg/fond2.jpg') }}" alt="" class="image" />
 									<div class="normal">
 										<div class="text">Plus visités</div>
 									</div>
 									<div class="hover">
-										<div class="text valeur">45</div>
+										<div class="text valeur">{{ plusVisite }}</div>
 									</div>
 								</a>
 							</div>
@@ -69,10 +69,10 @@
 								<a class="banner nobord margbot30" href="javascript:void(0);" >
 									<img src="{{ asset('img/bg/fond3.jpg') }}" alt="" class="image" />
 									<div class="normal">
-										<div class="text">Events</div>
+										<div class="text">Produits</div>
 									</div>
 									<div class="hover">
-										<div class="text valeur">1</div>
+										<div class="text valeur">{{ nombre_produit}}</div>
 									</div>
 								</a>
 							</div>

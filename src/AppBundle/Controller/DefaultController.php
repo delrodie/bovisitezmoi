@@ -20,12 +20,18 @@ class DefaultController extends Controller
         $domaines = $em->getRepository("AppBundle:Domaine")->liste()->getQuery()->getResult();
         $categories = $em->getRepository("AppBundle:Categorie")->liste()->getQuery()->getResult();
         $biens = $em->getRepository("AppBundle:Bien")->findListeDesc();
+        $nouveaute = $em->getRepository("AppBundle:Bien")->getNouveaute();
+        $plusVisite = $em->getRepository("AppBundle:Bien")->getPlusVisite();
+        $nombreproduit = $em->getRepository("AppBundle:Produit")->getProduit();
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig',[
             'sliders' => $sliders,
             'domaines' => $domaines,
             'categories' => $categories,
             'biens' => $biens,
+            'nouveaute' => $nouveaute,
+            'plusVisite' => $plusVisite,
+            'nombre_produit' => $nombreproduit
         ]);
     }
 

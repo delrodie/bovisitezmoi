@@ -14,4 +14,18 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->createQueryBuilder('p')->where('p.id = :produit')->setParameter('produit', $produit);
     }
+
+    public function getProduit($liste = null)
+    {
+        if (!$liste){
+            return $this->createQueryBuilder('p')
+                        ->select('count(p.id)')
+                        ->getQuery()->getSingleScalarResult()
+                ;
+        }else{
+            return $this->createQueryBuilder('p')
+                        ->getQuery()->getResult()
+                ;
+        }
+    }
 }
