@@ -55,4 +55,16 @@ class DefaultController extends Controller
         //return $this->redirectToRoute("frontebd_maintenance");
         return $this->render("default/dashboard.html.twig");
     }
+
+    /**
+     * @Route("/menu/footer/liste", name="menu_categorie_footer")
+     */
+    public function menuFooterAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $menus = $em->getRepository("AppBundle:Domaine")->liste()->getQuery()->getResult();
+        return $this->render("default/menu_footer.html.twig",[
+            'menus' => $menus,
+        ]);
+    }
 }
